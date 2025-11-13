@@ -41,27 +41,58 @@ This is a **Context7-optimized** version of the AT32F403A/407 firmware library, 
 - `at32f403a_407_conf_template.h` - Configuration template
 - `system_at32f403a_407.c/h` - System initialization code
 
-#### 4. **Board Support** (`project/at32f403a_407_board/`)
+#### 4. **Example Code** (`project/at_start_f403a/examples/`, `project/at_start_f407/examples/`)
+**1,985 example files** showing peripheral usage:
+- **937 files** for AT32F403A examples
+- **1,048 files** for AT32F407 examples
+
+**File Types:**
+- `.c` files - Complete working examples with main() functions
+- `.h` files - Configuration headers and definitions
+- `.txt` files - README files explaining each example
+
+**Example Categories:**
+- ADC examples (single, dual, DMA modes)
+- CAN examples (basic, filters, interrupts)
+- Flash examples (read, write, erase, sLib)
+- PWC examples (sleep, deepsleep, standby modes)
+- Timer examples (PWM, input capture, encoder)
+- Communication examples (USART, I2C, SPI, USB)
+- And many more...
+
+**List Files:**
+- `at_start_f403a_Example_list.htm` - Complete example index for F403A
+- `at_start_f407_Example_list.htm` - Complete example index for F407
+
+#### 5. **Board Support** (`project/at32f403a_407_board/`)
 - `at32f403a_407_board.c/h` - Board-specific support code
 
-#### 5. **License**
+#### 6. **License**
 - `LICENSE` - Artery Technology license terms
 
 ---
 
 ## ❌ What Was Removed (Not Useful for Context7)
 
-To optimize for Context7 and reduce repository size, the following were removed:
+To optimize for Context7 and reduce repository size, the following were removed from examples:
 
+- **IDE project files** - Removed (.uvprojx, .ewp, .ewd, .uvoptx, etc.)
+- **Linker scripts** - Removed (.ld, .icf)
+- **Startup files** - Removed (.s assembly files)
+- **Build configurations** - Removed (.ini, .bat, workspace files)
+- **Compiled binaries** - Removed (.hex, .bin, .axf, .out files)
+
+**Other removals:**
 - **26MB CHM file** - Compiled help (not AI-searchable)
-- **IDE project files** - 2500+ files (.uvprojx, .ewp, .ewd, etc.)
-- **Example projects** - IDE-specific build configurations
-- **Linker scripts** - Build artifacts (.ld, .icf)
-- **Startup files** - Assembly files (.s)
 - **Middlewares** - 3rd party libraries (FatFS, lwIP, FreeRTOS)
 - **DSP implementations** - Large library not AT32-specific
 - **Utility demos** - Executable files and demo projects
 - **.git folder** - Version control
+
+**What Was KEPT from Examples:**
+- ✅ All `.c` source files - Main application code and peripheral examples
+- ✅ All `.h` header files - Configuration and definitions
+- ✅ All `.txt` files - README and documentation for each example
 
 ---
 
@@ -137,13 +168,14 @@ Links to errata sheet issues:
 
 ## 📊 File Statistics
 
-**Total Files:** ~130 files  
-**Size:** ~2-3 MB (reduced from 100MB+)  
-**Header Files:** 55+ (.h files)  
-**Source Files:** 30+ (.c files)  
-**Documentation:** 3 PDFs  
+**Total Files:** ~2,100 files  
+**Size:** ~5-7 MB (reduced from 100MB+)  
+**Header Files:** 500+ (.h files)  
+**Source Files:** 450+ (.c files)  
+**Example Files:** 1,985 (filtered from 2,500+)  
+**Documentation:** 3 PDFs + 2 HTML example lists  
 
-**Reduction:** 97% size reduction while keeping 100% of API information
+**Reduction:** ~93% size reduction while keeping 100% of API information + working examples
 
 ---
 
@@ -154,17 +186,25 @@ Links to errata sheet issues:
 **Q: "How do I configure CAN peripheral?"**  
 → Context7 searches `at32f403a_407_can.h` for API definitions  
 → References `at32f403a_407_can.c` for implementation  
+→ **NEW:** Shows working example from `examples/can/can_communication_mode/`  
 → Cross-references Errata Sheet Issue 2.1 for known issues
 
-**Q: "What's the Flash memory layout?"**  
-→ Finds `at32f403a_407_flash.h` with Flash API  
-→ References Errata Sheet Issues 12.1-12.4  
-→ Shows ZW/NZW memory areas and limitations
+**Q: "Show me a working ADC DMA example"**  
+→ **NEW:** Finds `examples/adc/adc_dma/` with complete code  
+→ Shows `main.c` with ADC + DMA configuration  
+→ References `adc_dma.txt` with explanation  
+→ Warns about Errata Issue 1.1 (dual mode limitations)
 
 **Q: "How to enter Deepsleep mode?"**  
 → Locates `at32f403a_407_pwc.h` with power API  
-→ Shows `pwc_deep_sleep_mode_enter()` function  
+→ **NEW:** Shows `examples/pwc/deepsleep/` working example  
+→ Demonstrates proper entry/exit sequence  
 → Warns about Errata Issue 6.1 (AHB division)
+
+**Q: "PWM generation with Timer?"**  
+→ **NEW:** Multiple examples in `examples/tmr/tmr_pwm_output/`  
+→ Shows different PWM modes and configurations  
+→ Complete working code ready to adapt
 
 ---
 
