@@ -30,3 +30,11 @@ $RECYCLE.BIN/
 *.md.backup
 temp/
 
+# Conversion guides and documentation artifacts
+QUICK_CONVERSION_GUIDE.md
+table6_pages.txt
+ULTIMATE_PDF_TO_MARKDOWN_PROMPT.md
+grok-datasheet.md
+CONVERSION_GUIDES_README.md
+CONVERSION_COMMANDS.sh
+
