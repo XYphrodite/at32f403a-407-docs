@@ -1,0 +1,345 @@
+# AT32F403A/407 Peripheral Relationships Taxonomy
+# For Context7 Cross-Reference and Dependency Mapping
+
+relationships:
+  CAN:
+    depends_on:
+      - peripheral: "CRM"
+        reason: "Clock enable and frequency configuration"
+        
+      - peripheral: "GPIO"
+        reason: "Pin mapping for CAN_TX and CAN_RX"
+        
+      - peripheral: "NVIC"
+        reason: "Interrupt handling for reception and errors"
+        
+    works_with:
+      - peripheral: "DMA"
+        use_case: "High-speed message buffering"
+        
+      - peripheral: "TMR"
+        use_case: "Timestamp for CAN messages"
+        
+    related_issues:
+      - "Issue 2.1: Reception failure affects CAN and GPIO"
+      - "Issue 2.2: Bus-off recovery uses NVIC interrupts"
+      
+  Flash:
+    depends_on:
+      - peripheral: "CRM"
+        reason: "Flash clock configuration"
+        
+    works_with:
+      - peripheral: "SPIM"
+        use_case: "External Flash interface"
+        relationship_type: "integrated"
+        
+    critical_notes:
+      - "Cannot execute from NZW while erasing NZW (Issue 12.2)"
+      - "SPIM Flash erase blocks CPU reads (Issue 12.3)"
+      - "sLib must be in ZW area only (Issue 12.1)"
+      
+  ADC:
+    depends_on:
+      - peripheral: "CRM"
+        reason: "ADC clock enable and configuration"
+        
+      - peripheral: "GPIO"
+        reason: "Analog input pin configuration"
+        
+    works_with:
+      - peripheral: "DMA"
+        use_case: "Continuous conversion transfer to memory"
+        critical: true
+        note: "Issue 1.1 affects dual mode with DMA"
+        
+      - peripheral: "TMR"
+        use_case: "Trigger ADC conversions with timer events"
+        
+    related_issues:
+      - "Issue 1.1: Dual mode stuck in scan mode affects DMA transfers"
+      
+  PWC:
+    depends_on:
+      - peripheral: "CRM"
+        reason: "Clock configuration before sleep modes"
+        critical: true
+        note: "Issue 6.1: AHB division must be removed"
+        
+      - peripheral: "CRM"
+        reason: "CLKOUT configuration"
+        note: "Issue 7.1: Must disable CLKOUT before Deepsleep"
+        
+    works_with:
+      - peripheral: "EXINT"
+        use_case: "Wakeup source from sleep/deepsleep"
+        
+      - peripheral: "RTC"
+        use_case: "Wakeup from standby mode"
+        
+      - peripheral: "GPIO"
+        use_case: "Pin state configuration during sleep"
+        note: "Issue 6.4: GPIO configuration affects Deepsleep"
+        
+    critical_notes:
+      - "Disable Systick before Deepsleep (Issue 6.2)"
+      - "WFI must complete without interruption (Issue 6.3)"
+      
+  TMR:
+    depends_on:
+      - peripheral: "CRM"
+        reason: "Timer clock enable"
+        
+      - peripheral: "GPIO"
+        reason: "PWM output pins, input capture pins"
+        
+    works_with:
+      - peripheral: "DMA"
+        use_case: "PWM pattern generation, input capture buffering"
+        note: "Issue 8.1: DMA request timing"
+        
+      - peripheral: "ADC"
+        use_case: "Trigger ADC conversions"
+        
+      - peripheral: "TMR"
+        use_case: "Master-slave timer synchronization"
+        note: "Issue 8.4: Slave mode sync issues"
+        
+    encoder_interface:
+      - peripheral: "GPIO"
+        note: "Issue 8.2: Encoder mode initialization"
+        
+  USART:
+    depends_on:
+      - peripheral: "CRM"
+        reason: "USART clock enable"
+        
+      - peripheral: "GPIO"
+        reason: "TX/RX pin configuration"
+        
+    works_with:
+      - peripheral: "DMA"
+        use_case: "High-speed data transmission and reception"
+        
+      - peripheral: "NVIC"
+        reason: "Interrupt-driven communication"
+        
+    related_issues:
+      - "Issue 9.1: Break frame duration"
+      - "Issue 9.2: Smart card mode (no workaround, use Rev B)"
+      
+  I2C:
+    depends_on:
+      - peripheral: "CRM"
+        reason: "I2C clock enable"
+        
+      - peripheral: "GPIO"
+        reason: "SCL/SDA pin configuration (open-drain)"
+        
+    works_with:
+      - peripheral: "DMA"
+        use_case: "Multi-byte transfers"
+        
+      - peripheral: "NVIC"
+        reason: "Event and error interrupts"
+        
+    related_issues:
+      - "Issue 4.1: Clock control bit clearing"
+      - "Issue 4.2: NACK not generated"
+      - "Issue 4.3: Double START condition"
+      - "Issue 4.4: Delayed master START (fixed in Rev B)"
+      
+  I2S:
+    depends_on:
+      - peripheral: "SPI"
+        reason: "I2S uses SPI hardware"
+        relationship_type: "shared_hardware"
+        
+      - peripheral: "CRM"
+        reason: "I2S clock configuration"
+        
+      - peripheral: "GPIO"
+        reason: "Audio data pins (WS, CK, SD, MCK)"
+        
+    works_with:
+      - peripheral: "DMA"
+        use_case: "Continuous audio streaming"
+        critical: true
+        
+    related_issues:
+      - "Issue 5.1 to 5.5: Various timing and frame sync issues"
+      - "All I2S issues fixed in Revision B"
+      
+  SPI:
+    depends_on:
+      - peripheral: "CRM"
+        reason: "SPI clock enable"
+        
+      - peripheral: "GPIO"
+        reason: "MOSI/MISO/SCK/CS pin configuration"
+        
+    works_with:
+      - peripheral: "DMA"
+        use_case: "High-speed data transfers"
+        
+      - peripheral: "I2S"
+        relationship_type: "shared_hardware"
+        note: "Cannot use SPI and I2S simultaneously on same instance"
+        
+    related_issues:
+      - "Issue 14.1: CS signal synchronization"
+      
+  USB:
+    depends_on:
+      - peripheral: "CRM"
+        reason: "USB clock must be 48MHz exactly"
+        
+      - peripheral: "GPIO"
+        reason: "USB D+/D- pins"
+        
+    works_with:
+      - peripheral: "DMA"
+        use_case: "Endpoint data transfers"
+        
+    related_issues:
+      - "Issue 13.1: HUB broadcast message"
+      - "Issue 13.2: Endpoint 7 MPS limited to 0x3F"
+      - "Both issues fixed in Revision B"
+      
+  DMA:
+    works_with:
+      - peripheral: "ADC"
+        priority: "high"
+        note: "Issue with dual mode"
+        
+      - peripheral: "USART"
+        priority: "high"
+        
+      - peripheral: "SPI"
+        priority: "high"
+        
+      - peripheral: "I2C"
+        priority: "medium"
+        
+      - peripheral: "I2S"
+        priority: "high"
+        
+      - peripheral: "TMR"
+        priority: "medium"
+        
+      - peripheral: "USB"
+        priority: "medium"
+        
+  EXINT:
+    depends_on:
+      - peripheral: "GPIO"
+        reason: "External interrupt sources"
+        
+      - peripheral: "NVIC"
+        reason: "Interrupt routing"
+        
+    works_with:
+      - peripheral: "PWC"
+        use_case: "Wakeup from sleep modes"
+        
+    related_issues:
+      - "Issue 15.1: Software trigger double interrupt"
+      
+  RTC:
+    depends_on:
+      - peripheral: "PWC"
+        reason: "Backup domain access"
+        
+      - peripheral: "CRM"
+        reason: "RTC clock source selection"
+        
+    works_with:
+      - peripheral: "EXINT"
+        use_case: "Alarm interrupt"
+        
+      - peripheral: "PWC"
+        use_case: "Wakeup from standby"
+        
+    related_issues:
+      - "Issue 11.1: Counter off-by-one"
+      
+  WWDT:
+    depends_on:
+      - peripheral: "CRM"
+        reason: "WWDT clock enable"
+        
+      - peripheral: "NVIC"
+        reason: "Early wakeup interrupt"
+        
+    related_issues:
+      - "Issue 10.1: RLDF flag clearing in interrupt"
+      
+  CRM:
+    critical_role: "Central clock management for entire system"
+    affects_all: true
+    
+    special_relationships:
+      - peripheral: "PWC"
+        note: "Critical for power modes (AHB div, CLKOUT)"
+        
+      - peripheral: "USB"
+        note: "Must provide exactly 48MHz"
+        
+      - peripheral: "CAN"
+        note: "APB1 clock affects bit timing"
+        
+  GPIO:
+    ubiquitous: true
+    note: "Required by almost all peripherals for pin mapping"
+    
+# Common issue patterns by peripheral combination
+issue_patterns:
+  Flash_and_Interrupts:
+    peripherals: ["Flash", "NVIC"]
+    pattern: "Interrupt during Flash erase causes exception"
+    solution: "Disable interrupts during Flash operations"
+    issues: ["12.2", "12.3"]
+    
+  PWC_and_CRM:
+    peripherals: ["PWC", "CRM"]
+    pattern: "Clock configuration affects power modes"
+    solution: "Configure clocks before entering sleep"
+    issues: ["6.1", "7.1"]
+    
+  ADC_and_DMA:
+    peripherals: ["ADC", "DMA"]
+    pattern: "Dual mode scan with DMA causes hang"
+    solution: "Use DMA protection or avoid scan mode"
+    issue: "1.1"
+    
+  CAN_and_GPIO:
+    peripherals: ["CAN", "GPIO"]
+    pattern: "Pin configuration affects CAN reliability"
+    solution: "Proper GPIO alternate function setup"
+    
+# Dependency chains
+dependency_chains:
+  typical_application_startup:
+    - "CRM (enable all clocks)"
+    - "GPIO (configure pins)"
+    - "Peripheral-specific initialization"
+    - "NVIC (enable interrupts)"
+    - "DMA (if used)"
+    
+  low_power_entry:
+    - "Disable unnecessary peripherals"
+    - "Configure GPIO for low power"
+    - "CRM: Remove AHB division, disable CLKOUT"
+    - "Disable Systick"
+    - "PWC: Enter sleep mode"
+    
+  CAN_application:
+    required: ["CRM", "GPIO", "NVIC"]
+    optional: ["DMA", "TMR"]
+    critical_issues: ["2.1", "2.2"]
+    
+  Flash_programming:
+    required: ["CRM", "Flash"]
+    caution: "Must disable ALL interrupts"
+    critical_issues: ["12.1", "12.2", "12.3"]
+

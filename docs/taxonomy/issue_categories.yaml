@@ -1,0 +1,207 @@
+# AT32F403A/407 Issue Categories Taxonomy
+# For Context7 Error Type Classification and Search
+
+issue_categories:
+  data_corruption:
+    name: "Data Corruption"
+    description: "Issues causing data loss, corruption, or disorder"
+    severity: "critical"
+    examples:
+      - "CAN reception mailbox data disorder"
+      - "Flash read errors during erase"
+      - "ADC conversion result corruption"
+    related_peripherals: ["CAN", "Flash", "ADC", "I2C", "I2S"]
+    keywords:
+      - "data loss"
+      - "corrupted data"
+      - "wrong value"
+      - "incorrect result"
+      
+  system_hang:
+    name: "System Hang/Freeze"
+    description: "Issues causing system to stop responding or freeze"
+    severity: "critical"
+    examples:
+      - "ADC dual mode stuck in scan mode"
+      - "I2C bus lock"
+      - "SPI transfer hang"
+    related_peripherals: ["ADC", "I2C", "SPI", "TMR"]
+    keywords:
+      - "stuck"
+      - "freeze"
+      - "hang"
+      - "not responding"
+      - "deadlock"
+      
+  exception:
+    name: "System Exception"
+    description: "Issues triggering hardware exceptions or faults"
+    severity: "critical"
+    examples:
+      - "Flash NZW erase causes system exception"
+      - "Interrupt during Flash operation"
+    related_peripherals: ["Flash", "SPIM"]
+    keywords:
+      - "exception"
+      - "fault"
+      - "hard fault"
+      - "crash"
+      
+  wakeup_failure:
+    name: "Power Management Wakeup Failure"
+    description: "Cannot wake from sleep/deepsleep modes"
+    severity: "high"
+    examples:
+      - "Cannot wake from Deepsleep with AHB division"
+      - "Systick prevents Deepsleep entry"
+      - "CLKOUT exception after wakeup"
+    related_peripherals: ["PWC", "CRM", "RTC", "EXINT"]
+    keywords:
+      - "cannot wake"
+      - "wakeup failure"
+      - "stuck in sleep"
+      - "deepsleep"
+      - "standby mode"
+      
+  timing_error:
+    name: "Timing/Synchronization Error"
+    description: "Issues with timing, delays, or synchronization"
+    severity: "medium"
+    examples:
+      - "CAN bit time quantum calculation error"
+      - "TMR slave mode timing issue"
+      - "USART break frame timing"
+    related_peripherals: ["CAN", "TMR", "USART", "I2C", "I2S"]
+    keywords:
+      - "timing"
+      - "delay"
+      - "synchronization"
+      - "bit time"
+      - "clock"
+      
+  communication_failure:
+    name: "Communication Protocol Failure"
+    description: "Communication bus errors or protocol violations"
+    severity: "high"
+    examples:
+      - "CAN bus-off state"
+      - "I2C NACK not generated"
+      - "I2S frame synchronization error"
+    related_peripherals: ["CAN", "I2C", "I2S", "USART", "SPI", "USB"]
+    keywords:
+      - "bus error"
+      - "protocol error"
+      - "communication failure"
+      - "transmission error"
+      - "reception failure"
+      
+  configuration_error:
+    name: "Configuration/Initialization Error"
+    description: "Issues with peripheral configuration or initialization"
+    severity: "medium"
+    examples:
+      - "I2C clock control bit clearing"
+      - "TMR encoder mode initialization"
+      - "SPI chip select timing"
+    related_peripherals: ["I2C", "TMR", "SPI", "USART"]
+    keywords:
+      - "initialization"
+      - "configuration"
+      - "setup"
+      - "register setting"
+      
+  memory_access:
+    name: "Memory Access Error"
+    description: "Issues with memory read/write operations"
+    severity: "critical"
+    examples:
+      - "Flash sLib placement in NZW area"
+      - "Flash erase while executing from NZW"
+      - "SPIM Flash read during erase"
+    related_peripherals: ["Flash", "SPIM", "DMA"]
+    keywords:
+      - "memory error"
+      - "read error"
+      - "write error"
+      - "erase failure"
+      - "access violation"
+      
+  interrupt_issue:
+    name: "Interrupt Handling Issue"
+    description: "Problems with interrupt generation, handling, or timing"
+    severity: "medium"
+    examples:
+      - "WWDT RLDF flag clearing in interrupt"
+      - "EXINT software trigger double interrupt"
+      - "DMA interrupt timing"
+    related_peripherals: ["WWDT", "EXINT", "NVIC", "DMA"]
+    keywords:
+      - "interrupt"
+      - "ISR"
+      - "handler"
+      - "flag"
+      - "double trigger"
+      
+  register_issue:
+    name: "Register Access/Control Issue"
+    description: "Register bit behavior or flag handling problems"
+    severity: "low"
+    examples:
+      - "RTC counter off-by-one"
+      - "WWDT RLDF flag bit clearing"
+      - "GPIO configuration register timing"
+    related_peripherals: ["RTC", "WWDT", "GPIO"]
+    keywords:
+      - "register"
+      - "flag"
+      - "bit"
+      - "control bit"
+      
+  filter_issue:
+    name: "Filter/Masking Issue"
+    description: "Hardware filter or masking not working correctly"
+    severity: "medium"
+    examples:
+      - "CAN filter bypass during error"
+      - "I2C address masking"
+    related_peripherals: ["CAN", "I2C"]
+    keywords:
+      - "filter"
+      - "mask"
+      - "filtering"
+      
+  dma_issue:
+    name: "DMA Transfer Issue"
+    description: "Problems with DMA transfers or configuration"
+    severity: "medium"
+    examples:
+      - "ADC DMA transfer in dual mode"
+      - "TMR DMA request timing"
+      - "I2S DMA underrun"
+    related_peripherals: ["ADC", "TMR", "I2S", "USART", "SPI", "DMA"]
+    keywords:
+      - "DMA"
+      - "transfer"
+      - "direct memory access"
+      
+severity_mapping:
+  critical:
+    description: "Can cause data loss, system crash, or complete failure"
+    response_time: "immediate"
+    workaround_required: true
+    
+  high:
+    description: "Major functionality impaired or unreliable operation"
+    response_time: "before production"
+    workaround_required: true
+    
+  medium:
+    description: "Functionality works with limitations or specific conditions"
+    response_time: "plan workaround"
+    workaround_required: "recommended"
+    
+  low:
+    description: "Minor issues or edge cases with minimal impact"
+    response_time: "optional"
+    workaround_required: false
+

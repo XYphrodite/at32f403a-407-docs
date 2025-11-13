@@ -1,3 +1,52 @@
+---
+title: "AT32F403A/407 Errata Sheet"
+document_id: "ES0002"
+version: "2.0.11"
+release_date: "2024-06-24"
+conversion_date: "2024-11-13"
+type: "errata-sheet"
+vendor: "Artery Technology"
+total_issues: 41
+high_priority_issues: 7
+revision_a_issues: 41
+revision_b_fixed: 16
+tags:
+  - errata
+  - device-limitations
+  - workarounds
+  - silicon-bugs
+  - hardware-issues
+peripherals:
+  - name: "ADC"
+    issues: 3
+    priority: ["high"]
+  - name: "CAN"
+    issues: 4
+    priority: ["high", "high"]
+  - name: "Flash"
+    issues: 4
+    priority: ["high", "high", "high"]
+  - name: "PWC"
+    issues: 4
+    priority: ["high"]
+  - name: "I2C"
+    issues: 4
+  - name: "I2S"
+    issues: 5
+  - name: "TMR"
+    issues: 5
+  - name: "USART"
+    issues: 2
+  - name: "USB"
+    issues: 2
+  - name: "Others"
+    issues: 8
+has_code_examples: true
+has_diagrams: true
+diagram_count: 4
+code_example_count: 15
+---
+
 # AT32F403A/407 Series Errata Sheet
 
 **ES0002**  

@@ -1,0 +1,171 @@
+# AT32F403A/407 Priority Levels Taxonomy
+# For Context7 Issue Prioritization and Risk Assessment
+
+priority_levels:
+  high:
+    emoji: "🔴"
+    name: "High Priority"
+    description: "Critical issues that can cause system failure, data loss, or production problems"
+    count: 7
+    
+    criteria:
+      - "Causes data corruption or loss"
+      - "System hang or crash"
+      - "Hardware exception"
+      - "Cannot recover without reset"
+      - "Production system failure"
+      - "Safety-critical impact"
+      
+    action_required:
+      - "MUST implement workaround before production"
+      - "Test thoroughly with error scenarios"
+      - "Consider Revision B if issue is fixed"
+      - "Document in system design"
+      
+    issues:
+      - issue_number: "1.1.1"
+        peripheral: "ADC"
+        title: "Dual mode stuck in scan mode"
+        impact: "System hang"
+        
+      - issue_number: "1.1.2.1"
+        peripheral: "CAN"
+        title: "Reception failure during retransmission"
+        impact: "Lost messages, data corruption"
+        
+      - issue_number: "1.1.2.2"
+        peripheral: "CAN"
+        title: "Bus-off automatic recovery"
+        impact: "Communication failure"
+        
+      - issue_number: "1.1.6.1"
+        peripheral: "PWC"
+        title: "Cannot wake from Deepsleep with AHB division"
+        impact: "Power management failure"
+        
+      - issue_number: "1.1.12.1"
+        peripheral: "Flash"
+        title: "sLib placement in NZW area"
+        impact: "Program crash"
+        
+      - issue_number: "1.1.12.2"
+        peripheral: "Flash"
+        title: "NZW erase system exception"
+        impact: "System exception"
+        
+      - issue_number: "1.1.12.3"
+        peripheral: "Flash"
+        title: "SPIM Flash erase CPU read"
+        impact: "Read errors, data corruption"
+        
+  medium:
+    emoji: "🟡"
+    name: "Medium Priority"
+    description: "Functional issues that may cause problems under specific conditions"
+    count: 29
+    
+    criteria:
+      - "Affects functionality under specific conditions"
+      - "Workaround available and reasonable"
+      - "Limited performance impact"
+      - "Configuration-dependent"
+      - "Peripheral works with limitations"
+      
+    action_required:
+      - "Review if using affected peripheral"
+      - "Implement workaround if applicable"
+      - "Test in your specific use case"
+      - "Monitor for conditions that trigger issue"
+      
+    examples:
+      - "CAN time quantum calculation error"
+      - "I2C clock control bit clearing"
+      - "TMR slave mode synchronization"
+      - "USART break frame duration"
+      - "I2S frame error detection"
+      
+  low:
+    emoji: "🟢"
+    name: "Low Priority"
+    description: "Minor issues or edge cases with minimal impact"
+    count: 5
+    
+    criteria:
+      - "Affects only edge cases or rare conditions"
+      - "Minimal functional impact"
+      - "Easy workaround available"
+      - "Documentation issue mainly"
+      - "Off-by-one errors in non-critical paths"
+      
+    action_required:
+      - "Be aware of limitation"
+      - "Apply workaround if convenient"
+      - "Usually does not block production"
+      - "Monitor if issue affects your application"
+      
+    examples:
+      - "RTC counter off-by-one"
+      - "GPIO configuration timing"
+      - "Register flag clearing sequence"
+      
+revision_status:
+  revision_a:
+    total_issues: 41
+    high_priority: 7
+    medium_priority: 29
+    low_priority: 5
+    workaround_available: 39
+    no_workaround: 2
+    
+  revision_b:
+    fixed_issues: 16
+    fixed_percentage: 39
+    remaining_issues: 25
+    high_priority_remaining: 7
+    recommendation: "Use Revision B for new designs"
+    
+    fixed_peripherals:
+      - name: "ADC"
+        fixed: 3
+        total: 3
+        percentage: 100
+        
+      - name: "USB"
+        fixed: 2
+        total: 2
+        percentage: 100
+        
+      - name: "I2C"
+        fixed: 2
+        total: 4
+        percentage: 50
+        
+      - name: "I2S"
+        fixed: 2
+        total: 5
+        percentage: 40
+        
+      - name: "PWC"
+        fixed: 2
+        total: 4
+        percentage: 50
+        
+    not_fixed_critical:
+      - "All Flash issues (4)"
+      - "CAN reception failure"
+      - "CAN data disorder"
+      
+decision_matrix:
+  new_design:
+    recommendation: "Use Revision B"
+    rationale: "39% of issues fixed, including all ADC and USB issues"
+    
+  existing_design_rev_a:
+    recommendation: "Implement high-priority workarounds"
+    rationale: "39/41 issues have workarounds available"
+    
+  production_readiness:
+    requirement: "All high-priority workarounds implemented and tested"
+    testing: "Must verify workarounds in actual use case"
+    documentation: "Document known limitations in system design"
+

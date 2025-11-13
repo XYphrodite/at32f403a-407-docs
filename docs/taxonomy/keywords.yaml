@@ -1,0 +1,336 @@
+# AT32F403A/407 Keywords Taxonomy
+# For Context7 Semantic Search and Query Optimization
+
+# Symptom-based keywords (what users describe)
+symptoms:
+  system_issues:
+    - "crash"
+    - "freeze"
+    - "hang"
+    - "stuck"
+    - "not responding"
+    - "deadlock"
+    - "locked up"
+    - "stops working"
+    
+  data_issues:
+    - "data loss"
+    - "corrupted data"
+    - "wrong value"
+    - "incorrect result"
+    - "missing data"
+    - "data disorder"
+    - "garbled data"
+    - "bad data"
+    
+  communication_issues:
+    - "no response"
+    - "message lost"
+    - "reception failure"
+    - "transmission error"
+    - "bus error"
+    - "communication failure"
+    - "cannot send"
+    - "cannot receive"
+    
+  power_issues:
+    - "cannot wake"
+    - "stuck in sleep"
+    - "wakeup failure"
+    - "power consumption high"
+    - "deepsleep not working"
+    - "won't sleep"
+    - "current draw high"
+    
+  memory_issues:
+    - "erase failed"
+    - "write failed"
+    - "read error"
+    - "flash error"
+    - "memory exception"
+    - "access violation"
+    - "hard fault"
+    
+  timing_issues:
+    - "too slow"
+    - "too fast"
+    - "timing error"
+    - "synchronization problem"
+    - "delay wrong"
+    - "clock issue"
+
+# Technical terminology
+technical_terms:
+  can:
+    - "bit stuffing"
+    - "bus-off"
+    - "error passive"
+    - "error active"
+    - "mailbox"
+    - "filter"
+    - "identifier"
+    - "arbitration"
+    - "retransmission"
+    - "bit time"
+    - "time quantum"
+    
+  flash:
+    - "ZW area"
+    - "NZW area"
+    - "zero-wait"
+    - "non-zero-wait"
+    - "sLib"
+    - "security library"
+    - "SPIM"
+    - "erase"
+    - "program"
+    - "sector"
+    - "page"
+    
+  power:
+    - "sleep mode"
+    - "deepsleep"
+    - "standby"
+    - "wakeup"
+    - "WFI"
+    - "WFE"
+    - "AHB division"
+    - "CLKOUT"
+    - "Systick"
+    - "low power"
+    
+  adc:
+    - "conversion"
+    - "dual mode"
+    - "scan mode"
+    - "DMA"
+    - "sampling"
+    - "resolution"
+    - "channels"
+    
+  timers:
+    - "PWM"
+    - "input capture"
+    - "output compare"
+    - "encoder mode"
+    - "slave mode"
+    - "master mode"
+    - "trigger"
+    - "prescaler"
+    
+  communication:
+    - "baud rate"
+    - "frame"
+    - "parity"
+    - "stop bit"
+    - "overrun"
+    - "framing error"
+    - "noise error"
+    - "break"
+
+# Action-based keywords (what users want to do)
+actions:
+  initialization:
+    - "initialize"
+    - "configure"
+    - "setup"
+    - "enable"
+    - "start"
+    - "begin"
+    
+  operation:
+    - "send"
+    - "receive"
+    - "read"
+    - "write"
+    - "erase"
+    - "program"
+    - "transfer"
+    - "convert"
+    
+  debugging:
+    - "debug"
+    - "troubleshoot"
+    - "diagnose"
+    - "test"
+    - "verify"
+    - "check"
+    
+  optimization:
+    - "optimize"
+    - "improve"
+    - "reduce power"
+    - "increase speed"
+    - "reliability"
+
+# Use case keywords
+use_cases:
+  automotive:
+    - "automotive"
+    - "vehicle"
+    - "car"
+    - "CAN bus"
+    - "ECU"
+    - "dashboard"
+    
+  industrial:
+    - "industrial control"
+    - "PLC"
+    - "automation"
+    - "motor control"
+    - "sensor"
+    - "actuator"
+    
+  consumer:
+    - "consumer electronics"
+    - "home automation"
+    - "IoT"
+    - "smart device"
+    
+  embedded:
+    - "embedded system"
+    - "firmware"
+    - "real-time"
+    - "RTOS"
+    - "bare-metal"
+
+# Peripheral aliases and abbreviations
+peripheral_aliases:
+  CAN:
+    - "Controller Area Network"
+    - "can bus"
+    - "can controller"
+    
+  ADC:
+    - "Analog to Digital"
+    - "analog converter"
+    - "A/D converter"
+    - "adc converter"
+    
+  USART:
+    - "UART"
+    - "serial port"
+    - "serial communication"
+    - "RS232"
+    - "RS485"
+    
+  I2C:
+    - "I²C"
+    - "IIC"
+    - "two-wire"
+    - "TWI"
+    
+  SPI:
+    - "serial peripheral"
+    - "four-wire"
+    
+  GPIO:
+    - "digital IO"
+    - "pins"
+    - "ports"
+    
+  TMR:
+    - "timer"
+    - "TIM"
+    - "counter"
+    
+  PWC:
+    - "power control"
+    - "power management"
+    - "PM"
+    
+  CRM:
+    - "clock"
+    - "RCC"
+    - "reset control"
+    - "clock management"
+    
+  DMA:
+    - "direct memory"
+    - "memory transfer"
+
+# Workaround-related keywords
+workarounds:
+  - "workaround"
+  - "solution"
+  - "fix"
+  - "avoid"
+  - "prevent"
+  - "mitigation"
+  - "bypass"
+  - "alternative"
+
+# Priority and severity keywords
+priority:
+  high:
+    - "critical"
+    - "urgent"
+    - "must fix"
+    - "high priority"
+    - "blocking"
+    - "production"
+    
+  medium:
+    - "important"
+    - "should fix"
+    - "medium priority"
+    - "functional"
+    
+  low:
+    - "minor"
+    - "low priority"
+    - "nice to have"
+    - "edge case"
+
+# Revision-related keywords
+revisions:
+  - "revision A"
+  - "revision B"
+  - "rev A"
+  - "rev B"
+  - "hardware revision"
+  - "silicon revision"
+  - "fixed in"
+  - "not fixed"
+
+# Development phase keywords
+development_phases:
+  - "prototype"
+  - "development"
+  - "production"
+  - "mass production"
+  - "field deployment"
+  - "testing"
+  - "validation"
+  - "qualification"
+
+# Common question patterns
+question_patterns:
+  why:
+    - "why does"
+    - "why can't"
+    - "why won't"
+    - "what causes"
+    - "reason for"
+    
+  how:
+    - "how to"
+    - "how do I"
+    - "how can I"
+    - "steps to"
+    - "procedure"
+    
+  what:
+    - "what is"
+    - "what are"
+    - "what does"
+    - "which"
+    
+  troubleshooting:
+    - "problem with"
+    - "issue with"
+    - "not working"
+    - "doesn't work"
+    - "failed"
+    - "error"
+

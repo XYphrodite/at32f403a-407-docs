@@ -1,0 +1,259 @@
+# AT32F403A/407 Peripherals Taxonomy
+# For Context7 Semantic Search and Categorization
+
+peripherals:
+  ADC:
+    full_name: "Analog-to-Digital Converter"
+    category: "Analog"
+    subcategory: "Data Acquisition"
+    description: "12-bit successive approximation ADC with DMA support"
+    related: ["DMA", "TMR", "GPIO"]
+    common_uses: 
+      - "sensor-reading"
+      - "voltage-measurement"
+      - "temperature-sensing"
+      - "analog-monitoring"
+    issues_count: 3
+    high_priority: true
+    errata_section: "1.1.1"
+    
+  CAN:
+    full_name: "Controller Area Network"
+    category: "Communication"
+    subcategory: "Bus Protocol"
+    description: "2.0A/B compliant CAN controller for automotive and industrial use"
+    related: ["GPIO", "CRM", "NVIC"]
+    common_uses:
+      - "automotive"
+      - "industrial-control"
+      - "robotics"
+      - "real-time-communication"
+    issues_count: 4
+    high_priority: true
+    errata_section: "1.1.2"
+    
+  GPIO:
+    full_name: "General Purpose Input/Output"
+    category: "Digital I/O"
+    subcategory: "Port Control"
+    description: "Digital input/output pins with alternate function mapping"
+    related: ["EXINT", "TMR", "USART", "SPI", "I2C", "CAN"]
+    common_uses:
+      - "digital-control"
+      - "led-control"
+      - "button-input"
+      - "peripheral-mapping"
+    issues_count: 1
+    high_priority: false
+    errata_section: "1.1.3"
+    
+  I2C:
+    full_name: "Inter-Integrated Circuit"
+    category: "Communication"
+    subcategory: "Serial Bus"
+    description: "Multi-master serial bus for low-speed peripheral communication"
+    related: ["DMA", "GPIO", "CRM"]
+    common_uses:
+      - "sensor-communication"
+      - "eeprom-access"
+      - "rtc-interface"
+      - "multi-device-bus"
+    issues_count: 4
+    high_priority: false
+    errata_section: "1.1.4"
+    
+  I2S:
+    full_name: "Inter-IC Sound"
+    category: "Communication"
+    subcategory: "Audio Interface"
+    description: "Serial bus for digital audio data transfer"
+    related: ["SPI", "DMA", "GPIO"]
+    common_uses:
+      - "audio-playback"
+      - "audio-recording"
+      - "codec-interface"
+      - "digital-audio"
+    issues_count: 5
+    high_priority: false
+    errata_section: "1.1.5"
+    
+  PWC:
+    full_name: "Power Control"
+    category: "Power Management"
+    subcategory: "Low Power Modes"
+    description: "Power control with sleep, deepsleep, and standby modes"
+    related: ["CRM", "EXINT", "RTC", "GPIO"]
+    common_uses:
+      - "battery-powered"
+      - "low-power-design"
+      - "sleep-modes"
+      - "power-optimization"
+    issues_count: 4
+    high_priority: true
+    errata_section: "1.1.6"
+    
+  CRM:
+    full_name: "Clock and Reset Management"
+    category: "System Control"
+    subcategory: "Clock Configuration"
+    description: "System clock management and peripheral clock control"
+    related: ["PWC", "ALL_PERIPHERALS"]
+    common_uses:
+      - "clock-configuration"
+      - "frequency-scaling"
+      - "peripheral-enable"
+      - "system-initialization"
+    issues_count: 1
+    high_priority: false
+    errata_section: "1.1.7"
+    
+  TMR:
+    full_name: "Timer"
+    category: "Timing & Control"
+    subcategory: "Time Base"
+    description: "Advanced timers with PWM, input capture, and output compare"
+    related: ["DMA", "GPIO", "ADC"]
+    common_uses:
+      - "pwm-generation"
+      - "input-capture"
+      - "encoder-interface"
+      - "time-measurement"
+    issues_count: 5
+    high_priority: false
+    errata_section: "1.1.8"
+    
+  USART:
+    full_name: "Universal Synchronous/Asynchronous Receiver Transmitter"
+    category: "Communication"
+    subcategory: "Serial Interface"
+    description: "Serial communication with support for RS232, RS485, LIN, IrDA, smart card"
+    related: ["DMA", "GPIO", "NVIC"]
+    common_uses:
+      - "serial-communication"
+      - "debug-output"
+      - "modbus"
+      - "gps-interface"
+    issues_count: 2
+    high_priority: false
+    errata_section: "1.1.9"
+    
+  WWDT:
+    full_name: "Window Watchdog Timer"
+    category: "Safety & Monitoring"
+    subcategory: "Watchdog"
+    description: "Watchdog timer with window feature for system monitoring"
+    related: ["CRM", "NVIC"]
+    common_uses:
+      - "system-monitoring"
+      - "error-recovery"
+      - "safety-critical"
+      - "fault-detection"
+    issues_count: 1
+    high_priority: false
+    errata_section: "1.1.10"
+    
+  RTC:
+    full_name: "Real-Time Clock"
+    category: "Timing & Control"
+    subcategory: "Calendar/Clock"
+    description: "Real-time clock with calendar, alarm, and tamper detection"
+    related: ["PWC", "EXINT", "BPR"]
+    common_uses:
+      - "timekeeping"
+      - "scheduling"
+      - "timestamp"
+      - "alarm-function"
+    issues_count: 1
+    high_priority: false
+    errata_section: "1.1.11"
+    
+  Flash:
+    full_name: "Flash Memory Controller"
+    category: "Memory"
+    subcategory: "Non-Volatile Storage"
+    description: "Internal Flash with security library (sLib) and external SPIM Flash support"
+    related: ["SPIM"]
+    common_uses:
+      - "program-storage"
+      - "data-storage"
+      - "bootloader"
+      - "firmware-update"
+    issues_count: 4
+    high_priority: true
+    errata_section: "1.1.12"
+    
+  USB:
+    full_name: "Universal Serial Bus"
+    category: "Communication"
+    subcategory: "High-Speed Interface"
+    description: "USB 2.0 Full-Speed device/host with OTG support"
+    related: ["DMA", "GPIO"]
+    common_uses:
+      - "usb-device"
+      - "usb-host"
+      - "data-transfer"
+      - "firmware-programming"
+    issues_count: 2
+    high_priority: false
+    errata_section: "1.1.13"
+    
+  SPI:
+    full_name: "Serial Peripheral Interface"
+    category: "Communication"
+    subcategory: "Serial Bus"
+    description: "High-speed synchronous serial interface with multi-master support"
+    related: ["DMA", "GPIO", "I2S"]
+    common_uses:
+      - "flash-memory"
+      - "display-interface"
+      - "sd-card"
+      - "sensor-communication"
+    issues_count: 1
+    high_priority: false
+    errata_section: "1.1.14"
+    
+  EXINT:
+    full_name: "External Interrupt"
+    category: "Interrupt Management"
+    subcategory: "External Events"
+    description: "External interrupt lines with edge/level triggering"
+    related: ["GPIO", "NVIC", "PWC"]
+    common_uses:
+      - "button-interrupt"
+      - "sensor-trigger"
+      - "wakeup-source"
+      - "event-detection"
+    issues_count: 1
+    high_priority: false
+    errata_section: "1.1.15"
+    
+  DMA:
+    full_name: "Direct Memory Access"
+    category: "Data Transfer"
+    subcategory: "Memory Management"
+    description: "Multi-channel DMA for peripheral-to-memory transfers"
+    related: ["ADC", "USART", "SPI", "I2C", "TMR", "USB"]
+    common_uses:
+      - "high-speed-transfer"
+      - "cpu-offload"
+      - "continuous-sampling"
+      - "bulk-data-transfer"
+    issues_count: 0
+    high_priority: false
+    errata_section: "N/A"
+    
+  SPIM:
+    full_name: "Serial Peripheral Interface Master (Flash Interface)"
+    category: "Memory"
+    subcategory: "External Flash"
+    description: "Dedicated SPI master for external Flash memory"
+    related: ["Flash", "SPI"]
+    common_uses:
+      - "external-flash"
+      - "code-execution"
+      - "data-storage"
+      - "memory-expansion"
+    issues_count: 0
+    high_priority: false
+    note: "Related to Flash errata 12.3"
+

@@ -1,11 +1,64 @@
-# AT32F403A/407 Device Limitations - Comprehensive Errata Documentation
+---
+title: "AT32F403A/407 MCU Documentation Repository"
+type: "mcu-documentation"
+purpose: "context7-knowledge-source"
+mcu_family: "AT32F403A/407"
+architecture: "ARM Cortex-M4"
+vendor: "Artery"
+documentation_version: "2.0.11"
+last_updated: "2024-11-13"
+tags:
+  - mcu
+  - microcontroller
+  - embedded-systems
+  - arm-cortex-m4
+  - errata
+  - device-limitations
+  - context7
+  - artery-at32
+peripherals:
+  - CAN
+  - Flash
+  - PWC
+  - ADC
+  - I2C
+  - I2S
+  - TMR
+  - USART
+  - USB
+  - GPIO
+status: "production-ready"
+---
+
+# AT32F403A/407 MCU Documentation Repository
+## Reference Source for Context7
 
 ![Status](https://img.shields.io/badge/Documentation-Complete-brightgreen)
+![Type](https://img.shields.io/badge/Type-MCU%20Documentation-blue)
 ![Issues Documented](https://img.shields.io/badge/Issues-41%2F41-blue)
 ![Mermaid Diagrams](https://img.shields.io/badge/Diagrams-4-orange)
 ![Code Examples](https://img.shields.io/badge/Examples-15%2B-purple)
 
-Comprehensive **Markdown documentation** of all known device limitations for the **Artery AT32F403A/407** ARM Cortex-M4 microcontroller series, converted from official PDF errata sheet ES0002 v2.0.11.
+**Comprehensive MCU documentation repository** for the **Artery AT32F403A/407** ARM Cortex-M4 microcontroller series. This repository serves as a primary documentation source for Context7, providing structured technical references, device limitations, and implementation guidelines.
+
+**Includes:** Complete errata sheet (ES0002 v2.0.11) converted to Markdown with visual diagrams, code examples, and development checklists.
+
+---
+
+## 📖 Context7 Integration
+
+This repository is designed as a **documentation source for Context7**, providing:
+
+- **Structured Technical References:** Complete MCU specifications and limitations in searchable Markdown format
+- **Development Guidance:** Peripheral-specific implementation guidelines with code examples
+- **Device Limitations Catalog:** All 41 known issues with priority levels and workarounds
+- **Quick Access:** Search-friendly format for rapid information retrieval during development
+
+**Use this repository as a reference when:**
+- Developing firmware for AT32F403A/407 microcontrollers
+- Implementing Context7 MCU support and peripherals
+- Documenting device-specific behaviors and workarounds
+- Training new developers on AT32 capabilities and limitations
 
 ---
 
@@ -307,12 +360,13 @@ This documentation is converted from **official Artery Technology documents**.
 
 ### This Repository
 
-- **Purpose:** Educational and development use
-- **Format:** Markdown conversion for accessibility
-- **Enhancements:** Visual diagrams, cross-references, code examples
-- **Status:** Community-maintained documentation
+- **Purpose:** MCU documentation source for Context7 and embedded development
+- **Format:** Markdown conversion for accessibility and search-friendliness
+- **Enhancements:** Visual diagrams, cross-references, code examples, development checklists
+- **Status:** Production-ready documentation for Context7 integration
+- **Target Audience:** Context7 developers, embedded systems engineers, MCU firmware developers
 
-**Disclaimer:** This is an unofficial community conversion of official Artery documentation. Always refer to the latest official PDFs for production use.
+**Disclaimer:** This is an unofficial community conversion of official Artery documentation. Always refer to the latest official PDFs for production use. This repository serves as a reference tool and should be used alongside official Artery documentation.
 
 ---
 
@@ -341,6 +395,9 @@ This documentation is converted from **official Artery Technology documents**.
 
 ### Future Enhancements
 
+- 📌 Context7 integration guide for developers
+- 📌 API reference documentation for Context7 MCU bindings
+- 📌 Peripheral driver implementation examples
 - 📌 Add more practical examples
 - 📌 Create troubleshooting guide
 - 📌 Add migration guide from STM32
@@ -358,11 +415,23 @@ This documentation is converted from **official Artery Technology documents**.
 
 ---
 
-**Last Updated:** November 10, 2024  
-**Documentation Version:** v2.0.11  
-**Repository Status:** ✅ Production Ready
+## 🔗 Context7 Resources
 
-**⭐ Star this repo** if you find it helpful!  
-**🔄 Share** with other AT32 developers!  
-**🤝 Contribute** to help the community!
+- **Context7 Repository:** Primary project repository
+- **TafcoMcuCore:** MCU core implementation and drivers
+- **Firmware Library:** Artery AT32F403A/407 firmware (in `AT32F403A_407_Firmware_Library/` directory)
+
+---
+
+**Last Updated:** November 2024  
+**Documentation Version:** v2.0.11  
+**Repository Status:** ✅ Production Ready for Context7
+
+**🎯 MCU Documentation:** Complete reference for AT32F403A/407 development  
+**📚 Context7 Source:** Primary documentation repository for MCU support  
+**🚀 Ready to Use:** All 41 issues documented with working examples  
+
+**⭐ Help Others:** Star this repo if Context7 MCU support helped you!  
+**🔄 Share:** Help other developers working on AT32 projects!  
+**🤝 Contribute:** Improve documentation for the embedded community!
 
