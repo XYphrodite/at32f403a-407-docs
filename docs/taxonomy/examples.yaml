@@ -1,0 +1,500 @@
+# AT32F403A/407 Example Code Taxonomy
+# For Context7 Example Discovery and Navigation
+
+examples_overview:
+  total_files: 1985
+  f403a_files: 937
+  f407_files: 1048
+  file_types:
+    - ".c files - Main application code"
+    - ".h files - Configuration headers"
+    - ".txt files - README and documentation"
+  locations:
+    - "project/at_start_f403a/examples/"
+    - "project/at_start_f407/examples/"
+
+# Example categories by peripheral
+peripheral_examples:
+  ADC:
+    example_count: 8
+    categories:
+      basic:
+        - "adc_ordinary_differential_mode"
+        - "adc_ordinary_mode"
+        - "adc_preempt_mode"
+      advanced:
+        - "adc_combine_mode"
+        - "adc_dma"
+        - "adc_oversample"
+        - "adc_temperature_sensor"
+        - "adc_vbat"
+    common_use_cases:
+      - "Single channel conversion"
+      - "Multi-channel scanning"
+      - "DMA continuous sampling"
+      - "Temperature sensing"
+      - "Battery voltage monitoring"
+    
+  CAN:
+    example_count: 5
+    categories:
+      basic:
+        - "can_communication_mode"
+        - "can_communication_mode_noloopback"
+      advanced:
+        - "can_loop_back"
+        - "can_time_trigger"
+        - "can_ttcan"
+    common_use_cases:
+      - "Basic CAN messaging"
+      - "Filter configuration"
+      - "Time-triggered CAN"
+      - "Loopback testing"
+    errata_related: ["2.1", "2.2", "2.3", "2.4"]
+    
+  Flash:
+    example_count: 4
+    categories:
+      basic:
+        - "flash_write_read"
+      advanced:
+        - "operate_spim"
+        - "run_in_spim"
+    common_use_cases:
+      - "Internal Flash read/write/erase"
+      - "External SPI Flash operations"
+      - "Code execution from external Flash"
+    errata_related: ["12.1", "12.2", "12.3", "12.4"]
+    critical: true
+    
+  GPIO:
+    example_count: 3
+    categories:
+      basic:
+        - "io_toggle"
+        - "led_toggle"
+      advanced:
+        - "swjtag_remap"
+    common_use_cases:
+      - "LED control"
+      - "Digital I/O toggling"
+      - "JTAG remapping"
+      
+  I2C:
+    example_count: 5
+    categories:
+      polling:
+        - "communication_poll"
+      interrupt:
+        - "communication_int"
+      dma:
+        - "communication_dma"
+      devices:
+        - "eeprom"
+        - "memory_write"
+    common_use_cases:
+      - "I2C EEPROM access"
+      - "Multi-byte transfers"
+      - "Master/slave communication"
+      - "DMA-based transfers"
+      
+  I2S:
+    example_count: 4
+    categories:
+      basic:
+        - "halfduplex_interrupt"
+        - "halfduplex_dma"
+      advanced:
+        - "fullduplex_dma"
+        - "spii2s_switch_halfduplex_polling"
+    common_use_cases:
+      - "Audio data transfer"
+      - "Half-duplex communication"
+      - "Full-duplex streaming"
+      - "SPI/I2S mode switching"
+      
+  PWC:
+    example_count: 3
+    categories:
+      sleep_modes:
+        - "sleep_tmr2"
+        - "deepsleep_rtc"
+      monitoring:
+        - "power_voltage_monitor"
+    common_use_cases:
+      - "Low power sleep modes"
+      - "Deepsleep with RTC wakeup"
+      - "Power voltage monitoring"
+    errata_related: ["6.1", "6.2", "6.3", "6.4", "7.1"]
+    critical: true
+    
+  TMR:
+    example_count: 15
+    categories:
+      basic:
+        - "tmr_cascade_synchro"
+        - "tmr_one_pulse"
+        - "tmr_timer_base"
+      capture:
+        - "tmr_input_capture"
+        - "tmr_pwm_input"
+      pwm:
+        - "tmr_7_pwm_output"
+        - "tmr_complementary_signals"
+        - "tmr_oc_high"
+        - "tmr_oc_low"
+        - "tmr_oc_toggle"
+        - "tmr_pwm_output"
+        - "tmr_pwm_output_simulate"
+      advanced:
+        - "tmr_dma"
+        - "tmr_encoder"
+        - "tmr_hall_xor"
+    common_use_cases:
+      - "PWM generation (motor control, LED dimming)"
+      - "Input capture (frequency measurement)"
+      - "Encoder interface"
+      - "Complementary PWM with deadtime"
+      - "Hall sensor interface"
+      
+  USART:
+    example_count: 14
+    categories:
+      basic:
+        - "polling"
+        - "printf"
+      interrupt:
+        - "interrupt"
+      dma:
+        - "transfer_by_dma_interrupt"
+        - "transfer_by_dma_polling"
+      protocols:
+        - "rs485"
+        - "smartcard"
+        - "synchronous"
+        - "irda"
+        - "lin"
+      advanced:
+        - "halfduplex"
+        - "flow_control"
+        - "receiver_mute"
+        - "transmitter_halt"
+    common_use_cases:
+      - "Serial communication"
+      - "Debug output (printf)"
+      - "Modbus/RS485"
+      - "IrDA wireless"
+      - "LIN automotive"
+      - "Smart card interface"
+      
+  USB:
+    example_count: 13
+    categories:
+      device_classes:
+        - "audio"
+        - "keyboard"
+        - "mouse"
+        - "msc"
+        - "printer"
+        - "virtual_comport"
+        - "custom_hid"
+        - "winusb"
+      composite:
+        - "composite_audio_hid"
+        - "composite_vcp_keyboard"
+        - "composite_vcp_msc"
+      special:
+        - "vcp_loopback"
+        - "virtual_msc_iap"
+    common_use_cases:
+      - "USB CDC (Virtual COM Port)"
+      - "USB Mass Storage"
+      - "HID devices (keyboard, mouse)"
+      - "USB audio device"
+      - "Composite devices"
+      - "In-Application Programming (IAP)"
+      
+  SPI:
+    example_count: 6
+    categories:
+      basic:
+        - "fullduplex_polling"
+        - "halfduplex_polling"
+      interrupt:
+        - "fullduplex_interrupt"
+      dma:
+        - "fullduplex_dma"
+      flash:
+        - "spi_w25qxx_flash"
+        - "spi_w25qxx_fatfs"
+    common_use_cases:
+      - "SPI Flash memory access"
+      - "High-speed data transfer"
+      - "FAT filesystem on SPI Flash"
+      - "Full/half duplex communication"
+      
+  EMAC:
+    example_count: 10
+    f407_only: true
+    categories:
+      basic:
+        - "telnet"
+        - "iperf"
+      protocols:
+        - "tcp_client"
+        - "tcp_server"
+        - "udp"
+        - "http_server"
+        - "dns_client"
+        - "mqtt_client"
+      advanced:
+        - "ptp_master"
+        - "wake_on_lan"
+    common_use_cases:
+      - "Ethernet TCP/IP communication"
+      - "Web server (HTTP)"
+      - "MQTT IoT"
+      - "Network speed testing (iperf)"
+      - "Time synchronization (PTP)"
+      - "Remote wakeup (WoL)"
+    note: "EMAC examples only available for F407"
+    
+  XMC:
+    example_count: 6
+    f407_only: true
+    categories:
+      lcd:
+        - "lcd_8bit"
+        - "lcd_touch_16bit"
+      memory:
+        - "nand/ecc"
+        - "nand/nand"
+        - "nor"
+        - "psram"
+    common_use_cases:
+      - "LCD display interface"
+      - "Touch screen interface"
+      - "NAND Flash with ECC"
+      - "NOR Flash interface"
+      - "PSRAM expansion"
+    note: "XMC examples only available for F407"
+    
+  EXINT:
+    example_count: 2
+    categories:
+      basic:
+        - "exint_config"
+        - "exint_software_trigger"
+    common_use_cases:
+      - "External interrupt on GPIO"
+      - "Button press detection"
+      - "Software-triggered interrupts"
+    errata_related: ["15.1"]
+    
+  WDT:
+    example_count: 2
+    categories:
+      - "wdt_reset"
+      - "wdt_standby"
+    common_use_cases:
+      - "System watchdog monitoring"
+      - "Reset on hang"
+      - "Standby mode with watchdog"
+      
+  WWDT:
+    example_count: 1
+    categories:
+      - "wwdt_reset"
+    common_use_cases:
+      - "Window watchdog timer"
+      - "Precise timing watchdog"
+    errata_related: ["10.1"]
+    
+  RTC:
+    example_count: 4
+    categories:
+      basic:
+        - "rtc_calendar"
+        - "rtc_lsi"
+      advanced:
+        - "rtc_tamper"
+        - "rtc_clock_calibration"
+    common_use_cases:
+      - "Real-time clock/calendar"
+      - "Tamper detection"
+      - "Clock calibration"
+      - "Low-speed oscillator backup"
+    errata_related: ["11.1"]
+
+# Example patterns for Context7 queries
+query_patterns:
+  basic_peripheral_use:
+    query: "How to use [PERIPHERAL]?"
+    example_path: "examples/[peripheral]/[basic_example]/"
+    
+  dma_transfer:
+    query: "How to use [PERIPHERAL] with DMA?"
+    example_path: "examples/[peripheral]/[peripheral]_dma/"
+    example_peripherals: ["ADC", "USART", "SPI", "I2C", "I2S", "TMR"]
+    
+  interrupt_driven:
+    query: "Interrupt-driven [PERIPHERAL] example?"
+    example_path: "examples/[peripheral]/[mode]_interrupt/"
+    example_peripherals: ["USART", "SPI", "I2C", "I2S", "EXINT"]
+    
+  polling_mode:
+    query: "Polling mode [PERIPHERAL]?"
+    example_path: "examples/[peripheral]/[mode]_polling/"
+    example_peripherals: ["USART", "SPI", "I2C"]
+    
+  pwm_generation:
+    query: "PWM generation example?"
+    example_path: "examples/tmr/tmr_pwm_output/"
+    related_examples: ["tmr_7_pwm_output", "tmr_complementary_signals"]
+    
+  low_power:
+    query: "Low power mode example?"
+    example_path: "examples/pwc/"
+    related: ["sleep_tmr2", "deepsleep_rtc"]
+    
+  communication_protocols:
+    query: "[PROTOCOL] communication?"
+    mappings:
+      "CAN": "examples/can/can_communication_mode/"
+      "I2C": "examples/i2c/communication_*/"
+      "SPI": "examples/spi/fullduplex_*/"
+      "USART": "examples/usart/polling/"
+      "USB CDC": "examples/usb_device/virtual_comport/"
+      "Ethernet": "examples/emac/tcp_*/"
+      
+  specific_devices:
+    "EEPROM": "examples/i2c/eeprom/"
+    "SPI Flash": "examples/spi/spi_w25qxx_flash/"
+    "LCD": "examples/xmc/lcd_*/"
+    "Touch Screen": "examples/xmc/lcd_touch_16bit/"
+
+# Example file structure
+example_structure:
+  typical_example_directory:
+    - "inc/ - Header files"
+    - "  - at32f403a_407_conf.h - Peripheral configuration"
+    - "  - at32f403a_407_int.h - Interrupt declarations"
+    - "  - at32f403a_407_clock.h - Clock configuration"
+    - "  - [peripheral]_*.h - Peripheral-specific headers"
+    - "src/ - Source files"
+    - "  - main.c - Main application code"
+    - "  - at32f403a_407_int.c - Interrupt handlers"
+    - "  - at32f403a_407_clock.c - Clock setup"
+    - "  - [peripheral]_*.c - Peripheral-specific code"
+    - "readme.txt - Example documentation"
+    
+  typical_main_structure:
+    sections:
+      - "System initialization (clocks, peripherals)"
+      - "Peripheral configuration"
+      - "Main loop or event handling"
+      - "Optional: DMA configuration"
+      - "Optional: Interrupt setup"
+
+# Cross-references with errata
+examples_addressing_errata:
+  CAN:
+    examples: ["can_communication_mode"]
+    errata_issues: ["2.1", "2.2"]
+    workarounds_shown: "Reception failure handling, filter configuration"
+    
+  Flash:
+    examples: ["flash_write_read", "operate_spim"]
+    errata_issues: ["12.1", "12.2", "12.3"]
+    workarounds_shown: "Interrupt disable during erase, ZW/NZW handling"
+    
+  PWC:
+    examples: ["deepsleep_rtc"]
+    errata_issues: ["6.1", "6.2"]
+    workarounds_shown: "AHB division removal, Systick disable"
+    
+  EXINT:
+    examples: ["exint_software_trigger"]
+    errata_issues: ["15.1"]
+    workarounds_shown: "Flag clearing to prevent double trigger"
+    
+  WWDT:
+    examples: ["wwdt_reset"]
+    errata_issues: ["10.1"]
+    workarounds_shown: "RLDF flag clearing in interrupt"
+    
+  RTC:
+    examples: ["rtc_calendar"]
+    errata_issues: ["11.1"]
+    workarounds_shown: "Counter off-by-one handling"
+
+# Quick start recommendations
+recommended_first_examples:
+  beginners:
+    - "gpio/led_toggle - Simplest example"
+    - "usart/printf - Debug output"
+    - "tmr/tmr_timer_base - Basic timing"
+    
+  intermediate:
+    - "adc/adc_dma - ADC with DMA"
+    - "can/can_communication_mode - CAN basics"
+    - "i2c/eeprom - I2C device communication"
+    
+  advanced:
+    - "tmr/tmr_complementary_signals - Advanced PWM"
+    - "usb_device/composite_vcp_msc - Composite USB"
+    - "emac/http_server - Ethernet web server (F407)"
+
+# Documentation completeness
+example_quality:
+  all_examples_include:
+    - "Working main.c with complete initialization"
+    - "Peripheral configuration code"
+    - "Clock setup for optimal performance"
+    - "readme.txt explaining purpose and usage"
+    
+  many_examples_include:
+    - "Multiple operation modes (polling, interrupt, DMA)"
+    - "Error handling examples"
+    - "Performance optimization tips (in comments)"
+    
+  some_examples_include:
+    - "Errata workaround demonstrations"
+    - "Integration with multiple peripherals"
+    - "Real-world application scenarios"
+
+# Context7 search hints
+search_optimization:
+  finding_examples:
+    - "Use peripheral name + 'example': 'CAN example'"
+    - "Use mode name: 'DMA example', 'interrupt example'"
+    - "Use application: 'EEPROM', 'LCD', 'motor control'"
+    
+  understanding_code:
+    - "main.c contains complete working code"
+    - "Look for peripheral_init() functions"
+    - "Check readme.txt for hardware requirements"
+    
+  adapting_examples:
+    - "Clock configuration may need adjustment for your board"
+    - "Pin assignments in GPIO configuration"
+    - "DMA channel selection"
+    - "Interrupt priorities"
+
+# Statistics summary
+statistics:
+  total_peripherals_with_examples: 16
+  total_example_categories: 100+
+  examples_with_errata_workarounds: 6
+  examples_with_dma: 20+
+  examples_with_interrupts: 30+
+  f407_exclusive_examples: 16
+  common_examples: 72+
+  
+# Last updated
+metadata:
+  last_updated: "2024-11-13"
+  firmware_library_version: "v2.2.1"
+  total_example_files: 1985
+  optimization: "Context7-filtered (no IDE files, only .c/.h/.txt)"
+
