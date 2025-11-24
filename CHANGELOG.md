@@ -4,6 +4,12 @@ All notable changes to the AT32F403A/407 documentation.
 
 ## [Unreleased]
 
+### Added
+- **FIRMWARE_EXAMPLES_CATALOG.md** - Comprehensive catalog of 1,985 firmware examples (937 F403A + 1,048 F407) with code snippets optimized for Context7 indexing
+- **DS_AT32F403A_V2.04_EN.md** - Complete AT32F403A datasheet converted to markdown format (2,981 lines, 160KB)
+- **examples.yaml** - Examples taxonomy in docs/taxonomy/ for AI semantic search integration
+- Enhanced docs/README.md with expanded taxonomy documentation
+
 ## [2.0.11] - 2024-11-13
 ### Added - Phase 1: Errata Conversion
 - Complete errata sheet ES0002 v2.0.11 conversion (41/41 issues)
