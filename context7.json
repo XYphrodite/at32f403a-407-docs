@@ -1,0 +1,45 @@
+{
+  "$schema": "https://context7.com/schema/context7.json",
+  "projectTitle": "AT32F403A/407 MCU Documentation",
+  "description": "Complete MCU documentation for Artery AT32F403A/407 ARM Cortex-M4 microcontrollers with firmware library containing 1,985 working examples, peripheral driver references, and comprehensive taxonomy system for semantic search.",
+  "folders": [
+    "docs/",
+    "AT32F403A_407_Firmware_Library/libraries/drivers/",
+    "AT32F403A_407_Firmware_Library/project/at_start_f403a/examples/",
+    "AT32F403A_407_Firmware_Library/project/at_start_f407/examples/"
+  ],
+  "excludeFolders": [
+    "images",
+    "AT32F403A_407_Firmware_Library/libraries/cmsis/cm4/core_support/dsp",
+    "AT32F403A_407_Firmware_Library/document"
+  ],
+  "excludeFiles": [
+    "CHANGELOG.md",
+    "LICENSE",
+    "CONTRIBUTING.md",
+    "CONTEXT7_BEST_PRACTICES_SUMMARY.md",
+    "CONTEXT7_IMPROVEMENTS_ROADMAP.md",
+    "QUICK_WINS.md",
+    "CONVERSION_COMMANDS.sh",
+    "CONVERSION_GUIDES_README.md",
+    "QUICK_CONVERSION_GUIDE.md",
+    "ULTIMATE_PDF_TO_MARKDOWN_PROMPT.md",
+    "table6_pages.txt",
+    "grok-datasheet.md",
+    "at_start_f403a_Example_list.htm",
+    "at_start_f407_Example_list.htm"
+  ],
+  "rules": [
+    "Always consult the official AT32F403A/407 errata sheet (ES0002 v2.0.11) from Artery Technology before implementing Flash, CAN, or PWC peripherals",
+    "For Flash operations: Never place sLib in Non-Zero-Wait (NZW) area, always disable interrupts during NZW Flash erase, and place erase code in Zero-Wait (ZW) area or RAM",
+    "For CAN communication: Implement workaround for reception failure using mailbox priority or lock/unlock method to prevent message loss during retransmission",
+    "For Power Management (PWC): Remove AHB frequency division before entering Deepsleep mode to prevent wake-up failure",
+    "For SPIM (SPI Flash interface): Always disable interrupts during external Flash erase operations to prevent CPU read errors",
+    "Check if issues are fixed in Revision B before implementing workarounds - 39% of known issues are resolved in hardware revision B",
+    "Always initialize peripherals using the provided firmware library drivers (at32f403a_407_*.c/h) rather than direct register access",
+    "Use the working code examples from AT32F403A_407_Firmware_Library/project/ as reference implementations for each peripheral",
+    "Refer to peripheral relationship mappings in docs/taxonomy/ to understand dependencies between peripherals (e.g., CAN requires GPIO and CRM configuration)",
+    "For production designs, download the latest official errata sheet from Artery Technology website and implement all documented high-priority workarounds"
+  ]
+}
+

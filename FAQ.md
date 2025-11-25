@@ -21,7 +21,7 @@
 6. **PWC Deepsleep Wakeup** (6.1) - Cannot wake
 7. **ADC Dual Mode Stuck** (1.1) - System hang
 
-**Reference:** [Critical Issues Section](README.md#critical-issues-must-address)
+**Reference:** Download ES0002 errata sheet from [Artery Technology](https://www.arterytek.com/)
 
 ---
 
@@ -39,7 +39,7 @@
 - **Method 2:** Lock/Unlock (recommended) ✅
 - **Method 3:** Software Filter (flexible)
 
-**Code:** [CAN Issue 2.1](ES0002_AT32F403A_407_Errata_Sheet_EN_V2.0.11.md#21-can-reception-failure)
+**Code Examples:** See `AT32F403A_407_Firmware_Library/project/*/examples/can/` and ES0002 errata sheet
 
 ---
 
@@ -125,7 +125,7 @@ pwc_deep_sleep_mode_enter(PWC_DEEP_SLEEP_ENTER_WFI);
 - Set CLKOUT to NOCLK (Issue 7.1)
 - Configure GPIO properly (Issue 6.4)
 
-**Reference:** [PWC Issues](ES0002_AT32F403A_407_Errata_Sheet_EN_V2.0.11.md#116-pwc)
+**Reference:** See PWC examples in `AT32F403A_407_Firmware_Library/project/*/examples/pwc/` and ES0002 errata sheet
 
 ---
 
@@ -157,7 +157,7 @@ __enable_irq();
 - Disable ALL interrupts during erase
 - Don't read from NZW during erase
 
-**Reference:** [Flash Issue 12.2](ES0002_AT32F403A_407_Errata_Sheet_EN_V2.0.11.md#1122-flash-nzw-erase)
+**Reference:** See Flash examples in `AT32F403A_407_Firmware_Library/project/*/examples/flash/` and ES0002 errata sheet
 
 ---
 
@@ -167,20 +167,17 @@ __enable_irq();
 **Quick Answer:** 15+ examples in errata sheet, more in firmware library
 
 **In This Repository:**
-- Errata sheet: 15+ workaround examples
-- CAN: 3 different reception workaround methods
-- Flash: Safe erase procedures
-- PWC: Deepsleep entry/exit
-- ADC: Dual mode protection
+- **1,985 working examples** in `AT32F403A_407_Firmware_Library/`
+- Peripheral examples: `project/at_start_f403a/examples/` and `project/at_start_f407/examples/`
+- Driver implementations: `libraries/drivers/src/` and `libraries/drivers/inc/`
+- CMSIS support: `libraries/cmsis/`
 
-**Firmware Library:**
-- Location: `AT32F403A_407_Firmware_Library/`
-- Examples: `project/at_start_f403a/examples/`
-- Drivers: `libraries/drivers/`
-
-**Coming Soon:**
-- `CODE_EXAMPLES/` directory with 30+ examples
-- Peripheral-specific example collections
+**Official Documentation:**
+- Download ES0002 errata sheet from [Artery Technology](https://www.arterytek.com/)
+- Contains 15+ workaround code examples
+- CAN: 3 different reception failure workaround methods
+- Flash: Safe erase procedures with interrupt handling
+- PWC: Deepsleep entry/exit procedures
 
 ---
 
@@ -229,9 +226,9 @@ __enable_irq();
 4. Submit Pull Request
 
 **For Context7 Developers:**
-- See CONTRIBUTING_CONTEXT7.md
-- Follow metadata requirements
-- Use semantic chunking guidelines
+- Review taxonomy system in `docs/`
+- Follow metadata requirements for code contributions
+- Use semantic tagging for new examples
 
 ---
 
@@ -239,17 +236,15 @@ __enable_irq();
 
 ### CAN Bus
 - [Why does my CAN bus lose messages?](#2-why-does-my-can-bus-lose-messages)
-- [CAN filter not working?](#) (coming soon)
-- [CAN bus-off recovery?](#) (coming soon)
+- For more CAN issues, consult ES0002 errata sheet (4 documented issues)
 
 ### Flash Memory
 - [How do I safely erase Flash NZW area?](#7-how-do-i-safely-erase-flash-nzw-area)
-- [sLib placement restrictions?](#) (coming soon)
-- [SPIM Flash erase issues?](#) (coming soon)
+- For more Flash issues, consult ES0002 errata sheet (4 documented issues)
 
 ### Power Management
 - [Why can't I wake up from Deepsleep?](#6-why-cant-i-wake-up-from-deepsleep-mode)
-- [Low power mode best practices?](#) (coming soon)
+- For more PWC issues, consult ES0002 errata sheet (4 documented issues)
 
 ### General
 - [What are the critical issues?](#1-what-are-the-critical-issues-i-must-address)
@@ -262,7 +257,7 @@ __enable_irq();
 
 ---
 
-**Status:** Initial 10 questions complete  
-**Target:** 75+ questions  
-**Next Update:** Add 10 peripheral-specific questions per major peripheral
+**Status:** 10 common questions answered  
+**For Device Errata:** Download ES0002 from [Artery Technology](https://www.arterytek.com/)  
+**For Code Examples:** See `AT32F403A_407_Firmware_Library/project/` directories
 

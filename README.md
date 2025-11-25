@@ -40,13 +40,15 @@ status: "production-ready"
 ![Code Examples](https://img.shields.io/badge/Examples-1985-purple)
 ![Firmware Library](https://img.shields.io/badge/Firmware-v2.2.1-green)
 
-**Comprehensive MCU documentation repository** for the **Artery AT32F403A/407** ARM Cortex-M4 microcontroller series. This repository serves as a primary documentation source for Context7, providing structured technical references, device limitations, and implementation guidelines.
+**Comprehensive MCU documentation repository** for the **Artery AT32F403A/407** ARM Cortex-M4 microcontroller series. This repository serves as a primary documentation source for Context7, providing structured technical references and implementation guidelines.
 
 **Includes:** 
-- Complete errata sheet (ES0002 v2.0.11) with visual diagrams and workarounds
-- **1,985 working example files** (Context7-optimized firmware library)
-- Comprehensive taxonomy system for semantic search
-- FAQ, CHANGELOG, and development guides
+- **1,985 working example files** (Context7-optimized firmware library v2.2.1)
+- Complete peripheral driver references with CMSIS support
+- Comprehensive taxonomy system for semantic search (6 YAML files)
+- FAQ and development guides
+
+**Note:** For device errata and limitations, please download the official ES0002 errata sheet (v2.0.11 or later) from [Artery Technology's official website](https://www.arterytek.com/).
 
 ---
 
@@ -71,27 +73,15 @@ This repository is designed as a **documentation source for Context7**, providin
 ## 🚀 Quick Start
 
 **Jump directly to:**
-- [📊 Quick Reference Table - All 41 Issues](ES0002_AT32F403A_407_Errata_Sheet_EN_V2.0.11.md#-quick-reference---all-issues-at-a-glance)
-- [🔴 Critical Issues (High Priority)](ES0002_AT32F403A_407_Errata_Sheet_EN_V2.0.11.md#critical-issues-to-address)
 - [📦 Firmware Library (1,985 Examples)](AT32F403A_407_Firmware_Library/)
 - [❓ FAQ - Common Questions](FAQ.md)
 - [🗂️ Taxonomy System for Context7](docs/)
 - [📝 CHANGELOG - Version History](CHANGELOG.md)
+- [🔗 Official Artery Website](https://www.arterytek.com/) - Download latest errata sheet (ES0002)
 
 ---
 
 ## 📚 Main Documentation
-
-### **[ES0002 Errata Sheet](ES0002_AT32F403A_407_Errata_Sheet_EN_V2.0.11.md)** ⭐
-
-**Complete device limitations documentation** with:
-- ✅ **41/41 subsections documented** (100% complete)
-- ✅ **1,380 lines** of detailed technical information
-- ✅ **4 embedded Mermaid diagrams** for complex topics
-- ✅ **15+ C code examples** with workarounds
-- ✅ **Quick reference table** with priority indicators
-- ✅ **Development checklists** for critical peripherals
-- ✅ **Revision A vs B comparison** for all issues
 
 ### **[Firmware Library v2.2.1](AT32F403A_407_Firmware_Library/)** 🔥
 
@@ -107,7 +97,7 @@ This repository is designed as a **documentation source for Context7**, providin
 ### **[Context7 Resources](docs/)**
 
 **Intelligent taxonomy system for semantic search:**
-- ✅ **[FAQ.md](FAQ.md)** - 10 most common questions with answers
+- ✅ **[FAQ.md](FAQ.md)** - Common questions with answers
 - ✅ **[CHANGELOG.md](CHANGELOG.md)** - Complete version history
 - ✅ **[Taxonomy System](docs/)** - 6 YAML files for Context7 AI
   - `peripherals.yaml` - 16 peripheral definitions
@@ -117,85 +107,41 @@ This repository is designed as a **documentation source for Context7**, providin
   - `peripheral_relationships.yaml` - Dependency mapping
   - `examples.yaml` - Complete example catalog
 
----
+### **Device Errata & Limitations**
 
-## 📊 Issues Summary
-
-### By Peripheral
-
-| Peripheral | Issues | Rev B Fixed | High Priority | Workarounds |
-|------------|--------|-------------|---------------|-------------|
-| **Flash** | 4 | 0/4 ❌ | 🔴🔴🔴 | ✅ Yes |
-| **CAN** | 4 | 3/4 | 🔴🔴 | ✅ Yes (3 methods) |
-| **PWC** | 4 | 2/4 | 🔴 | ✅ Yes |
-| **I2S** | 5 | 5/5 ✅ | - | ✅ Yes |
-| **TMR** | 5 | 1/5 | - | ✅ Yes |
-| **I2C** | 4 | 4/4 ✅ | - | ✅ Yes |
-| **ADC** | 3 | 3/3 ✅ | - | ✅ Yes |
-| **USB** | 2 | 2/2 ✅ | - | ✅ Yes |
-| **USART** | 2 | 2/2 ✅ | - | ✅ Yes (1 has none) |
-| **Others** | 8 | 2/8 | - | ✅ Yes |
-| **Total** | **41** | **16 (39%)** | **7** | **39/41 (95%)** |
-
-### By Priority
-
-| Priority | Count | Description |
-|----------|-------|-------------|
-| 🔴 **High** | 7 | Can cause system failure or data corruption |
-| 🟡 **Medium** | 29 | May cause functional issues under specific conditions |
-| 🟢 **Low** | 5 | Minor issues or edge cases |
-
-### Revision Status
-
-- **Fixed in Rev B:** 16 issues (39%)
-- **Not Fixed (with workaround):** 23 issues (56%)
-- **Not Fixed (no workaround):** 2 issues (5%) - **Use Rev B**
+For complete device errata documentation (ES0002), please visit:
+- **[Artery Official Website](https://www.arterytek.com/)** - Download ES0002 v2.0.11 or later
+- **Document:** AT32F403A/407 Errata Sheet (41 documented issues with workarounds)
+- **Includes:** Critical Flash, CAN, PWC issues; Revision A vs B comparison; Code examples
 
 ---
 
-## 🔴 Critical Issues (Must Address)
+## ⚠️ Known Device Limitations
 
-### Top 5 High-Priority Issues
+The AT32F403A/407 series has **41 documented silicon errata** that developers should be aware of:
 
-1. **Flash: sLib Placement (1.1.12.1)** 🔴
-   - **Impact:** Program crashes when sLib placed in NZW area
-   - **Fix:** Place sLib only in Zero-Wait (ZW) area
-   - **Status:** Not fixed in Rev B
+### Critical Areas Requiring Attention
 
-2. **Flash: NZW Erase During Execution (1.1.12.2)** 🔴
-   - **Impact:** System exception during erase
-   - **Fix:** Disable interrupts, place erase code in ZW/RAM
-   - **Status:** Not fixed in Rev B
+**🔴 High Priority Issues (7 total):**
+- **Flash Memory:** sLib placement restrictions, NZW erase exceptions, SPIM read errors
+- **CAN Bus:** Reception failures during retransmission with bit stuffing errors
+- **Power Management:** Deepsleep wake-up failures with AHB frequency division
+- **ADC:** Dual mode program hang conditions
 
-3. **Flash: SPIM Erase CPU Read (1.1.12.3)** 🔴
-   - **Impact:** Read errors during external Flash erase
-   - **Fix:** Disable interrupts during SPIM erase
-   - **Status:** Not fixed in Rev B
+**Hardware Revisions:**
+- **Revision A:** All 41 issues present
+- **Revision B:** Fixes 16 issues (39%), including all ADC, USB, and most I2C issues
 
-4. **CAN: Reception Failure (1.1.2.1)** 🔴
-   - **Impact:** Lost CAN messages during retransmission
-   - **Fix:** 3 methods available (mailbox priority, lock/unlock, software filter)
-   - **Status:** Not fixed in Rev B
+**Workaround Availability:**
+- 39 of 41 issues (95%) have documented workarounds
+- 2 issues require using Revision B hardware
 
-5. **PWC: Deepsleep + AHB Division (1.1.6.1)** 🔴
-   - **Impact:** Cannot wake up from Deepsleep mode
-   - **Fix:** Remove AHB frequency division before entering Deepsleep
-   - **Status:** Not fixed in Rev B
-
-**→ [See all issues with details](ES0002_AT32F403A_407_Errata_Sheet_EN_V2.0.11.md#-quick-reference---all-issues-at-a-glance)**
+**📥 Download Official Errata Sheet:**  
+Visit [Artery Technology](https://www.arterytek.com/) to download document **ES0002** (AT32F403A/407 Errata Sheet v2.0.11 or later) for complete details, code examples, and workarounds.
 
 ---
 
 ## 🎨 Key Features
-
-### Visual Enhancements
-
-This documentation includes **4 embedded Mermaid diagrams** that render automatically on GitHub:
-
-1. **📊 Revision Status Pie Chart** - Fix distribution across revisions
-2. **🚗 CAN Error Handling Flowchart** - Complete recovery procedure with 3 methods
-3. **⚡ PWC Deepsleep State Machine** - Power control flow with error states
-4. **💾 Flash Memory Layout Diagram** - ZW/NZW organization with issue mapping
 
 ### Code Examples
 
@@ -245,53 +191,42 @@ Ready-to-use checklists for:
 
 ### Example Workflow: CAN Implementation
 
-```markdown
-1. Navigate to CAN section (1.1.2)
-2. Review all 4 CAN issues
-3. Focus on 1.1.2.1 (Reception Failure) - High Priority
-4. View CAN Error Handling Flowchart
-5. Choose one of 3 workaround methods:
-   - Method 1: Mailbox Priority (simple)
-   - Method 2: Lock/Unlock (reliable) ← Recommended
-   - Method 3: Software Filter (flexible)
-6. Copy code example and integrate
-7. Test with CAN error simulation
-```
+1. Download the official ES0002 errata sheet from Artery Technology
+2. Review all 4 documented CAN issues in the errata sheet
+3. Focus on reception failure issue (high priority)
+4. Choose appropriate workaround method from the errata documentation
+5. Refer to CAN examples in `AT32F403A_407_Firmware_Library/project/*/examples/can/`
+6. Implement workaround and test thoroughly
 
 ---
 
 ## 🔍 Search Tips
 
-### By Issue Number
-Search for specific issue: `1.1.2.1`, `1.1.12.2`, etc.
-
 ### By Peripheral
-Search by name: `CAN`, `Flash`, `PWC`, `ADC`, etc.
+Search by name: `CAN`, `Flash`, `PWC`, `ADC`, `TMR`, `USART`, etc.
 
-### By Symptom
-Search by behavior:
-- "cannot wake up"
-- "data loss"
-- "exception"
-- "stuck"
-- "error"
+### By Example Type
+Search for specific implementations:
+- "DMA transfer"
+- "interrupt handler"
+- "PWM generation"
+- "USB device"
+- "I2C EEPROM"
 
 ### GitHub Search
-Use GitHub's file search (`/`) for instant navigation
+Use GitHub's file search (`/`) for instant navigation across examples and drivers
 
 ---
 
 ## 🛠️ Technical Details
 
-### Document Information
+### Repository Information
 
-- **Source:** ES0002_AT32F403A_407_Errata_Sheet_EN_V2.0.11.pdf
-- **Official Version:** v2.0.11
-- **Release Date:** 2024.06.24
-- **Conversion Date:** November 2024
-- **Format:** Markdown with Mermaid diagrams
-- **Lines:** 1,380
-- **Completeness:** 100% (41/41 subsections)
+- **Firmware Library Version:** v2.2.1
+- **Last Updated:** November 2024
+- **Total Examples:** 1,985 files
+- **Supported Devices:** AT32F403A/407 series
+- **Taxonomy Files:** 6 YAML classification files
 
 ### Supported Devices
 
@@ -334,34 +269,33 @@ Use GitHub's file search (`/`) for instant navigation
 
 ### Before Using AT32F403A/407
 
-- [ ] Read complete errata sheet
+- [ ] Download official ES0002 errata sheet from Artery Technology
+- [ ] Review all documented device limitations (41 issues)
 - [ ] Identify peripherals used in your design
-- [ ] Check high-priority issues (7 critical issues)
-- [ ] Review issues for each peripheral you're using
-- [ ] Implement required workarounds
-- [ ] Test with error scenarios
-- [ ] Consider Revision B for new designs
+- [ ] Check for critical issues in Flash, CAN, and PWC peripherals
+- [ ] Implement required workarounds from errata documentation
+- [ ] Consider using Revision B for new designs (39% issues fixed)
+- [ ] Test thoroughly with your specific use case
 
 ### For Each Peripheral
 
 **Flash Memory:**
-- [ ] Verify sLib is placed in ZW area only (1.1.12.1)
-- [ ] Disable interrupts during NZW erase (1.1.12.2)
-- [ ] Place erase functions in ZW/RAM (1.1.12.3)
-- [ ] Initialize UID/F_SIZE buffers before erase (1.1.12.4)
+- [ ] Consult ES0002 for Flash limitations (4 documented issues)
+- [ ] Never place sLib in Non-Zero-Wait (NZW) area
+- [ ] Disable interrupts during Flash erase operations
+- [ ] Place erase functions in Zero-Wait (ZW) area or RAM
 
 **CAN Communication:**
-- [ ] Implement one of 3 reception error methods (1.1.2.1)
-- [ ] Add manual bus-off recovery routine (1.1.2.2)
-- [ ] Configure auto-retransmit policy (1.1.2.3)
-- [ ] Verify time quantum calculation (1.1.2.4)
+- [ ] Consult ES0002 for CAN limitations (4 documented issues)
+- [ ] Implement reception failure workaround
+- [ ] Configure error handling for bit stuffing errors
+- [ ] Test with CAN bus disturbances
 
 **Power Management:**
-- [ ] Remove AHB division before Deepsleep (1.1.6.1)
-- [ ] Disable Systick before Deepsleep (1.1.6.2)
-- [ ] Ensure WFI completes atomically (1.1.6.3)
-- [ ] Configure GPIO states for Deepsleep (1.1.6.4)
-- [ ] Set CLKOUT to NOCLK before Deepsleep (1.1.7.1)
+- [ ] Consult ES0002 for PWC limitations (4 documented issues)
+- [ ] Remove AHB frequency division before Deepsleep
+- [ ] Disable Systick before entering Deepsleep mode
+- [ ] Configure GPIO and CLKOUT properly for low power modes
 
 ---
 
@@ -394,35 +328,30 @@ This documentation is converted from **official Artery Technology documents**.
 
 ## 📜 License & Attribution
 
-### Original Documents
+### Firmware Library
 
 - **Copyright © Artery Technology Co., Ltd.**
-- **Document:** ES0002_AT32F403A_407_Errata_Sheet_EN_V2.0.11
-- **Version:** v2.0.11
-- **Date:** 2024.06.24
+- **Version:** v2.2.1
+- **Content:** Peripheral drivers, examples, CMSIS support
 
 ### This Repository
 
-- **Purpose:** MCU documentation source for Context7 and embedded development
-- **Format:** Markdown conversion for accessibility and search-friendliness
-- **Enhancements:** Visual diagrams, cross-references, code examples, development checklists
-- **Status:** Production-ready documentation for Context7 integration
-- **Target Audience:** Context7 developers, embedded systems engineers, MCU firmware developers
+- **Purpose:** MCU firmware library and documentation for Context7 and embedded development
+- **Content:** 1,985 working code examples, peripheral drivers, taxonomy system
+- **Status:** Production-ready for Context7 integration
+- **Target Audience:** Embedded systems engineers, MCU firmware developers, Context7 AI developers
 
-**Disclaimer:** This is an unofficial community conversion of official Artery documentation. Always refer to the latest official PDFs for production use. This repository serves as a reference tool and should be used alongside official Artery documentation.
+**Important:** For device errata and silicon limitations, always download the latest ES0002 errata sheet from [Artery Technology's official website](https://www.arterytek.com/). This repository contains firmware examples and drivers, not the official errata documentation.
 
 ---
 
 ## 📈 Repository Statistics
 
-![Lines of Code](https://img.shields.io/badge/Documentation%20Lines-1%2C380-blue)
-![Issues Documented](https://img.shields.io/badge/Issues-41%2F41-brightgreen)
 ![Code Examples](https://img.shields.io/badge/Examples-1%2C985-purple)
-![Diagrams](https://img.shields.io/badge/Mermaid-4-orange)
-![Workarounds](https://img.shields.io/badge/Workarounds-39%2F41-green)
-![Priority](https://img.shields.io/badge/High%20Priority-7-red)
 ![Firmware](https://img.shields.io/badge/Firmware-v2.2.1-green)
 ![Taxonomy](https://img.shields.io/badge/Taxonomy-6%20files-yellow)
+![Peripherals](https://img.shields.io/badge/Peripherals-16+-blue)
+![Drivers](https://img.shields.io/badge/Drivers-Complete-brightgreen)
 
 ---
 
@@ -430,29 +359,26 @@ This documentation is converted from **official Artery Technology documents**.
 
 ### Achieved ✅
 
-- ✅ 100% content conversion from PDF to Markdown
-- ✅ All 41 device limitations documented
-- ✅ 4 Mermaid diagrams for visualization
 - ✅ **1,985 working code examples** (Context7-optimized)
 - ✅ **Complete firmware library v2.2.1** with peripheral drivers
 - ✅ **Intelligent taxonomy system** (6 YAML files)
-- ✅ **FAQ with 10 common questions**
+- ✅ **FAQ with common development questions**
 - ✅ **CHANGELOG for version tracking**
-- ✅ Quick reference table
-- ✅ Development checklists
-- ✅ Revision A vs B comparison
+- ✅ Development checklists and best practices
+- ✅ Complete CMSIS support for ARM Cortex-M4
+- ✅ Examples for all 16+ peripherals
 
 ### Future Enhancements
 
-- 📌 Context7 integration guide for developers
-- 📌 API reference documentation for Context7 MCU bindings
-- 📌 Peripheral driver implementation examples
-- 📌 Add more practical examples
-- 📌 Create troubleshooting guide
-- 📌 Add migration guide from STM32
-- 📌 Community-contributed workarounds
-- 📌 Video tutorials (community)
-- 📌 Translations (Chinese, etc.)
+- 📌 Context7 integration guide for AI developers
+- 📌 API reference documentation with detailed parameter descriptions
+- 📌 Advanced peripheral driver implementation examples
+- 📌 Comprehensive troubleshooting guide
+- 📌 Migration guide from STM32F4 series
+- 📌 Performance optimization tips and techniques
+- 📌 Low-power mode implementation guide
+- 📌 Community-contributed examples
+- 📌 Video tutorials (community-driven)
 
 ---
 
@@ -471,7 +397,9 @@ This documentation is converted from **official Artery Technology documents**.
 - **[Taxonomy System](docs/):** 6 YAML files for semantic search
 - **[FAQ](FAQ.md):** Common questions and answers
 - **[CHANGELOG](CHANGELOG.md):** Version history
-- **[Errata Sheet](ES0002_AT32F403A_407_Errata_Sheet_EN_V2.0.11.md):** All 41 issues
+
+**External Resources:**
+- **[Official Errata Sheet](https://www.arterytek.com/):** Download ES0002 for all 41 documented device limitations
 
 **Related Projects:**
 - **Context7 Repository:** Primary project repository
@@ -480,14 +408,13 @@ This documentation is converted from **official Artery Technology documents**.
 ---
 
 **Last Updated:** November 2024  
-**Documentation Version:** v2.0.11  
 **Firmware Version:** v2.2.1  
 **Repository Status:** ✅ Production Ready for Context7
 
-**🎯 MCU Documentation:** Complete reference for AT32F403A/407 development  
+**🎯 MCU Firmware Library:** Complete reference for AT32F403A/407 development  
 **📚 Context7 Source:** Primary documentation with 1,985 working examples  
-**🤖 AI-Optimized:** 6-file taxonomy system for intelligent search  
-**🚀 Ready to Use:** All 41 issues + complete firmware library  
+**🤖 AI-Optimized:** 6-file taxonomy system for intelligent semantic search  
+**🚀 Ready to Use:** Complete firmware library with drivers and examples  
 
 **⭐ Help Others:** Star this repo if Context7 MCU support helped you!  
 **🔄 Share:** Help other developers working on AT32 projects!  
