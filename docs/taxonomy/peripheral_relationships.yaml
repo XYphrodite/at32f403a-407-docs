@@ -1,7 +1,91 @@
 # AT32F403A/407 Peripheral Relationships Taxonomy
 # For Context7 Cross-Reference and Dependency Mapping
+# Updated: December 2024 - 26 peripherals
 
 relationships:
+  ACC:
+    depends_on:
+      - peripheral: "CRM"
+        reason: "Clock source for calibration"
+        
+      - peripheral: "TMR"
+        reason: "External reference clock input"
+        
+    works_with:
+      - peripheral: "USB"
+        use_case: "48MHz clock calibration for USB"
+        critical: true
+        
+    critical_notes:
+      - "Use external reference for high-accuracy USB clock"
+      - "Commonly used with HSI calibration"
+
+  BPR:
+    depends_on:
+      - peripheral: "PWC"
+        reason: "Backup domain access control"
+        
+    works_with:
+      - peripheral: "RTC"
+        use_case: "Backup registers and tamper detection"
+        
+    critical_notes:
+      - "Data retained in standby mode with VBAT power"
+      - "Tamper detection can trigger backup data erase"
+
+  CRC:
+    depends_on:
+      - peripheral: "CRM"
+        reason: "CRC clock enable"
+        
+    works_with:
+      - peripheral: "DMA"
+        use_case: "CRC calculation on DMA transfers"
+        
+      - peripheral: "Flash"
+        use_case: "Firmware integrity verification"
+        
+    critical_notes:
+      - "Hardware CRC-32 polynomial"
+      - "Use for data integrity in communication protocols"
+
+  DAC:
+    depends_on:
+      - peripheral: "CRM"
+        reason: "DAC clock enable"
+        
+      - peripheral: "GPIO"
+        reason: "Analog output pins"
+        
+    works_with:
+      - peripheral: "DMA"
+        use_case: "Continuous waveform generation"
+        
+      - peripheral: "TMR"
+        use_case: "Trigger DAC conversions"
+        
+    critical_notes:
+      - "12-bit resolution"
+      - "Dual channel for stereo audio output"
+
+  DEBUG:
+    works_with:
+      - peripheral: "TMR"
+        use_case: "Freeze timer during debug"
+        
+      - peripheral: "WDT"
+        use_case: "Freeze watchdog during debug"
+        
+      - peripheral: "WWDT"
+        use_case: "Freeze window watchdog during debug"
+        
+      - peripheral: "I2C"
+        use_case: "Freeze I2C timeout during debug"
+        
+    critical_notes:
+      - "SWD/JTAG interface for programming and debugging"
+      - "Configure peripheral freeze in debug mode"
+
   CAN:
     depends_on:
       - peripheral: "CRM"
@@ -230,6 +314,40 @@ relationships:
       - peripheral: "USB"
         priority: "medium"
         
+      - peripheral: "EMAC"
+        priority: "high"
+        note: "Essential for Ethernet data transfer"
+        
+      - peripheral: "SDIO"
+        priority: "high"
+        note: "SD card data transfers"
+        
+      - peripheral: "DAC"
+        priority: "medium"
+        note: "Waveform generation"
+
+  EMAC:
+    depends_on:
+      - peripheral: "CRM"
+        reason: "EMAC, EMACTX, EMACRX clock enable"
+        
+      - peripheral: "GPIO"
+        reason: "MII/RMII interface pins"
+        
+    works_with:
+      - peripheral: "DMA"
+        use_case: "TX/RX descriptor and buffer management"
+        critical: true
+        
+      - peripheral: "NVIC"
+        reason: "Receive and error interrupts"
+        
+    critical_notes:
+      - "AT32F407 only - not available on AT32F403A"
+      - "Supports MII and RMII PHY interfaces"
+      - "IEEE 1588 PTP timestamping available"
+      - "Uses LwIP TCP/IP stack in examples"
+        
   EXINT:
     depends_on:
       - peripheral: "GPIO"
@@ -244,6 +362,27 @@ relationships:
         
     related_issues:
       - "Issue 15.1: Software trigger double interrupt"
+
+  SDIO:
+    depends_on:
+      - peripheral: "CRM"
+        reason: "SDIO clock enable"
+        
+      - peripheral: "GPIO"
+        reason: "SD card data and control pins"
+        
+    works_with:
+      - peripheral: "DMA"
+        use_case: "High-speed data transfers"
+        critical: true
+        
+      - peripheral: "NVIC"
+        reason: "Card detection and error interrupts"
+        
+    critical_notes:
+      - "Supports SD, SDHC, and MMC cards"
+      - "4-bit and 1-bit data bus modes"
+      - "DMA recommended for best performance"
       
   RTC:
     depends_on:
@@ -263,6 +402,20 @@ relationships:
     related_issues:
       - "Issue 11.1: Counter off-by-one"
       
+  WDT:
+    depends_on:
+      - peripheral: "CRM"
+        reason: "Independent low-speed clock (LSI)"
+        
+    works_with:
+      - peripheral: "DEBUG"
+        use_case: "Freeze watchdog during debug"
+        
+    critical_notes:
+      - "Independent clock - runs even if main clock fails"
+      - "Cannot be stopped once started"
+      - "Use for system-level fault recovery"
+
   WWDT:
     depends_on:
       - peripheral: "CRM"
@@ -271,8 +424,29 @@ relationships:
       - peripheral: "NVIC"
         reason: "Early wakeup interrupt"
         
+    works_with:
+      - peripheral: "DEBUG"
+        use_case: "Freeze watchdog during debug"
+        
     related_issues:
       - "Issue 10.1: RLDF flag clearing in interrupt"
+
+  XMC:
+    depends_on:
+      - peripheral: "CRM"
+        reason: "XMC clock enable"
+        
+      - peripheral: "GPIO"
+        reason: "Address, data, and control pins"
+        
+    works_with:
+      - peripheral: "DMA"
+        use_case: "High-speed memory transfers"
+        
+    critical_notes:
+      - "Supports SRAM, NOR Flash, NAND Flash"
+      - "Can be used for LCD parallel interface"
+      - "Configurable timing for different memory types"
       
   CRM:
     critical_role: "Central clock management for entire system"
@@ -342,4 +516,34 @@ dependency_chains:
     required: ["CRM", "Flash"]
     caution: "Must disable ALL interrupts"
     critical_issues: ["12.1", "12.2", "12.3"]
+    
+  Ethernet_application:
+    required: ["CRM", "GPIO", "EMAC", "DMA", "NVIC"]
+    optional: ["TMR"]
+    note: "AT32F407 only, uses LwIP TCP/IP stack"
+    
+  SD_card_application:
+    required: ["CRM", "GPIO", "SDIO", "DMA"]
+    optional: ["NVIC"]
+    note: "Use DMA for best performance"
+    
+  External_memory_application:
+    required: ["CRM", "GPIO", "XMC"]
+    optional: ["DMA"]
+    note: "Configure timing for specific memory chip"
+    
+  USB_application:
+    required: ["CRM", "GPIO", "USB"]
+    optional: ["ACC", "DMA"]
+    note: "ACC can calibrate 48MHz USB clock"
+    
+  Analog_acquisition:
+    required: ["CRM", "GPIO", "ADC"]
+    optional: ["DMA", "TMR"]
+    critical_issues: ["1.1"]
+    
+  Waveform_generation:
+    required: ["CRM", "GPIO", "DAC"]
+    optional: ["DMA", "TMR"]
+    note: "Use TMR trigger for precise timing"
 
