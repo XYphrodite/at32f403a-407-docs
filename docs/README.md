@@ -9,7 +9,7 @@ This directory contains **structured taxonomy files** designed to optimize Conte
 
 ### **peripherals.yaml**
 Complete peripheral definitions with metadata:
-- 16 peripherals fully documented
+- 26 peripherals fully documented
 - Categories, descriptions, and common use cases
 - Related peripherals and dependencies
 - Issue counts and priority levels
