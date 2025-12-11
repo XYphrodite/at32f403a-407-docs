@@ -1,17 +1,15 @@
 {
   "$schema": "https://context7.com/schema/context7.json",
   "projectTitle": "AT32F403A/407 MCU Documentation",
-  "description": "Complete MCU documentation for Artery AT32F403A/407 ARM Cortex-M4 microcontrollers with firmware library containing 1,985 working examples, peripheral driver references, and comprehensive taxonomy system for semantic search.",
+  "description": "Comprehensive MCU documentation for Artery AT32F403A/407 ARM Cortex-M4 microcontrollers with 26 detailed peripheral documentation files, driver API references, CMSIS support, and taxonomy system for semantic search.",
   "folders": [
     "docs/",
     "AT32F403A_407_Firmware_Library/libraries/drivers/",
-    "AT32F403A_407_Firmware_Library/project/at_start_f403a/examples/",
-    "AT32F403A_407_Firmware_Library/project/at_start_f407/examples/"
+    "AT32F403A_407_Firmware_Library/libraries/cmsis/"
   ],
   "excludeFolders": [
     "images",
-    "AT32F403A_407_Firmware_Library/libraries/cmsis/cm4/core_support/dsp",
-    "AT32F403A_407_Firmware_Library/document"
+    "AT32F403A_407_Firmware_Library/libraries/cmsis/cm4/core_support/dsp"
   ],
   "excludeFiles": [
     "CHANGELOG.md",

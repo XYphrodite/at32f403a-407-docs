@@ -1,36 +1,29 @@
-# AT32F403A/407 Firmware Library
+# AT32F403A/407 Driver Library
 ## Context7-Optimized Version
 
 **Source:** Artery AT32F403A/407 Firmware Library v2.2.1  
 **Optimized For:** Context7 AI Knowledge Base  
-**Date:** November 2024
+**Date:** December 2024
 
 ---
 
 ## 📚 What's Included
 
-This is a **Context7-optimized** version of the AT32F403A/407 firmware library, containing **only the files useful for AI-powered documentation and development assistance**.
+This is a **Context7-optimized** version of the AT32F403A/407 driver library, containing **peripheral drivers and CMSIS support for API reference**.
 
 ### ✅ Included Files
 
-#### 1. **Documentation** (`document/`)
-- `AT32F403A_407固件库BSP&Pack应用指南.pdf` - BSP & Pack application guide
-- `ReleaseNotes_AT32F403A_407_Firmware_Library.pdf` - Library release notes
-
-#### 2. **Peripheral Drivers** (`libraries/drivers/`)
+#### 1. **Peripheral Drivers** (`libraries/drivers/`)
 **Header Files** (`inc/`) - 26 peripheral API definitions:
 - ADC, BPR, CAN, CRC, CRM, DAC, Debug, DMA, EMAC, EXINT
 - Flash, GPIO, I2C, MISC, PWC, RTC, SDIO, SPI, TMR
 - USART, USB, WDT, WWDT, XMC, ACC, DEF
 
-**Source Files** (`src/`) - 25 driver implementations:
+**Source Files** (`src/`) - 26 driver implementations:
 - Complete peripheral driver implementations in C
 - Shows proper API usage and peripheral control
 
-**Documentation:**
-- `ReleaseNotes_AT32F403A_407_Firmware_Library_Drivers.pdf`
-
-#### 3. **CMSIS Support** (`libraries/cmsis/`)
+#### 2. **CMSIS Support** (`libraries/cmsis/`)
 **Core Support** (`cm4/core_support/`):
 - ARM Cortex-M4 core headers
 - DSP function headers (definitions only)
@@ -41,64 +34,31 @@ This is a **Context7-optimized** version of the AT32F403A/407 firmware library, 
 - `at32f403a_407_conf_template.h` - Configuration template
 - `system_at32f403a_407.c/h` - System initialization code
 
-#### 4. **Example Code** (`project/at_start_f403a/examples/`, `project/at_start_f407/examples/`)
-**1,985 example files** showing peripheral usage:
-- **937 files** for AT32F403A examples
-- **1,048 files** for AT32F407 examples
-
-**File Types:**
-- `.c` files - Complete working examples with main() functions
-- `.h` files - Configuration headers and definitions
-- `.txt` files - README files explaining each example
-
-**Example Categories:**
-- ADC examples (single, dual, DMA modes)
-- CAN examples (basic, filters, interrupts)
-- Flash examples (read, write, erase, sLib)
-- PWC examples (sleep, deepsleep, standby modes)
-- Timer examples (PWM, input capture, encoder)
-- Communication examples (USART, I2C, SPI, USB)
-- And many more...
-
-**List Files:**
-- `at_start_f403a_Example_list.htm` - Complete example index for F403A
-- `at_start_f407_Example_list.htm` - Complete example index for F407
-
-#### 5. **Board Support** (`project/at32f403a_407_board/`)
-- `at32f403a_407_board.c/h` - Board-specific support code
-
-#### 6. **License**
+#### 3. **License**
 - `LICENSE` - Artery Technology license terms
 
 ---
 
 ## ❌ What Was Removed (Not Useful for Context7)
 
-To optimize for Context7 and reduce repository size, the following were removed from examples:
+To optimize for Context7 and reduce repository size:
 
-- **IDE project files** - Removed (.uvprojx, .ewp, .ewd, .uvoptx, etc.)
-- **Linker scripts** - Removed (.ld, .icf)
-- **Startup files** - Removed (.s assembly files)
-- **Build configurations** - Removed (.ini, .bat, workspace files)
-- **Compiled binaries** - Removed (.hex, .bin, .axf, .out files)
-
-**Other removals:**
-- **26MB CHM file** - Compiled help (not AI-searchable)
+- **Example project folders** - Removed (knowledge captured in [peripheral documentation](../docs/))
+- **Board support files** - Removed (knowledge captured in documentation)
+- **IDE project files** - Not needed for AI reference
 - **Middlewares** - 3rd party libraries (FatFS, lwIP, FreeRTOS)
 - **DSP implementations** - Large library not AT32-specific
-- **Utility demos** - Executable files and demo projects
-- **.git folder** - Version control
 
-**What Was KEPT from Examples:**
-- ✅ All `.c` source files - Main application code and peripheral examples
-- ✅ All `.h` header files - Configuration and definitions
-- ✅ All `.txt` files - README and documentation for each example
+**What's Available Instead:**
+- ✅ **26 comprehensive peripheral guides** in `docs/` folder with embedded code examples
+- ✅ **Complete driver API** in `libraries/drivers/` for reference
+- ✅ **CMSIS support** in `libraries/cmsis/` for core functionality
 
 ---
 
 ## 🎯 How Context7 Uses This
 
-Context7 leverages this firmware library for:
+Context7 leverages this driver library for:
 
 ### 1. **API Reference**
 All peripheral header files provide:
@@ -107,7 +67,7 @@ All peripheral header files provide:
 - Bit field definitions
 - Configuration structures
 
-### 2. **Implementation Examples**
+### 2. **Implementation Reference**
 Driver source files show:
 - Proper peripheral initialization
 - API usage patterns
@@ -122,11 +82,11 @@ CMSIS files provide:
 - System configuration
 
 ### 4. **Cross-References**
-Links to errata sheet issues:
-- CAN driver → Errata Issue 2.1-2.4
-- Flash driver → Errata Issue 12.1-12.4
-- PWC driver → Errata Issue 6.1-6.4
-- ADC driver → Errata Issue 1.1
+Links to peripheral documentation and errata:
+- `docs/CAN_Controller_Area_Network.md` → Errata Issue 2.1-2.4
+- `docs/FLASH_Flash_Memory_Controller.md` → Errata Issue 12.1-12.4
+- `docs/PWC_Power_Control.md` → Errata Issue 6.1-6.4
+- `docs/ADC_Analog_to_Digital_Converter.md` → Errata Issue 1.1
 
 ---
 
@@ -142,7 +102,7 @@ Links to errata sheet issues:
 6. **`at32f403a_407_gpio.h`** - GPIO API
 7. **`at32f403a_407_crm.h`** - Clock and reset management
 
-### Implementation Examples:
+### Implementation Sources:
 
 - **`at32f403a_407_can.c`** - CAN peripheral implementation
 - **`at32f403a_407_flash.c`** - Flash operations
@@ -155,6 +115,7 @@ Links to errata sheet issues:
 
 **In This Repository:**
 - [README.md](../README.md) - Main repository documentation
+- [Peripheral Documentation](../docs/) - 26 comprehensive peripheral guides
 - [ES0002 Errata Sheet](../ES0002_AT32F403A_407_Errata_Sheet_EN_V2.0.11.md) - Device limitations
 - [FAQ.md](../FAQ.md) - Frequently asked questions
 - [docs/taxonomy/](../docs/taxonomy/) - Context7 taxonomy system
@@ -168,14 +129,13 @@ Links to errata sheet issues:
 
 ## 📊 File Statistics
 
-**Total Files:** ~2,100 files  
-**Size:** ~5-7 MB (reduced from 100MB+)  
-**Header Files:** 500+ (.h files)  
-**Source Files:** 450+ (.c files)  
-**Example Files:** 1,985 (filtered from 2,500+)  
-**Documentation:** 3 PDFs + 2 HTML example lists  
+**Total Files:** ~120 files  
+**Size:** ~2 MB  
+**Header Files:** 60+ (.h files)  
+**Source Files:** 30+ (.c files)  
 
-**Reduction:** ~93% size reduction while keeping 100% of API information + working examples
+**Focus:** Core driver API and CMSIS support for reference  
+**Peripheral Documentation:** Available in [docs/](../docs/) folder
 
 ---
 
@@ -186,25 +146,24 @@ Links to errata sheet issues:
 **Q: "How do I configure CAN peripheral?"**  
 → Context7 searches `at32f403a_407_can.h` for API definitions  
 → References `at32f403a_407_can.c` for implementation  
-→ **NEW:** Shows working example from `examples/can/can_communication_mode/`  
+→ Shows code examples from `docs/CAN_Controller_Area_Network.md`  
 → Cross-references Errata Sheet Issue 2.1 for known issues
 
-**Q: "Show me a working ADC DMA example"**  
-→ **NEW:** Finds `examples/adc/adc_dma/` with complete code  
-→ Shows `main.c` with ADC + DMA configuration  
-→ References `adc_dma.txt` with explanation  
+**Q: "ADC with DMA?"**  
+→ Finds API in `at32f403a_407_adc.h` and `at32f403a_407_dma.h`  
+→ Shows code examples from `docs/ADC_Analog_to_Digital_Converter.md`  
 → Warns about Errata Issue 1.1 (dual mode limitations)
 
 **Q: "How to enter Deepsleep mode?"**  
 → Locates `at32f403a_407_pwc.h` with power API  
-→ **NEW:** Shows `examples/pwc/deepsleep/` working example  
+→ Shows code examples from `docs/PWC_Power_Control.md`  
 → Demonstrates proper entry/exit sequence  
 → Warns about Errata Issue 6.1 (AHB division)
 
 **Q: "PWM generation with Timer?"**  
-→ **NEW:** Multiple examples in `examples/tmr/tmr_pwm_output/`  
-→ Shows different PWM modes and configurations  
-→ Complete working code ready to adapt
+→ Shows API from `at32f403a_407_tmr.h`  
+→ Shows code examples from `docs/TMR_Timer.md`  
+→ Different PWM modes and configurations explained
 
 ---
 
@@ -238,9 +197,9 @@ To improve Context7's understanding of AT32 peripherals:
 
 ---
 
-**Last Updated:** November 2024  
-**Optimization:** Context7 Knowledge Base v1.0  
+**Last Updated:** December 2024  
+**Optimization:** Context7 Knowledge Base v2.0  
 **Status:** ✅ Production Ready
 
-**🎯 Context7-Optimized:** Maximum information, minimum bloat!
+**🎯 Context7-Optimized:** Driver API reference + comprehensive documentation!
 

@@ -67,17 +67,6 @@ Dependency mapping and cross-references:
 
 ---
 
-### **examples.yaml** ⭐ NEW
-Complete catalog of 1,985 working example files:
-- Example count and categories per peripheral
-- Common use cases for each example
-- Query patterns for finding examples
-- Errata workarounds demonstrated in examples
-- Quick start recommendations
-- F403A vs F407 differences
-
-**Context7 Use:** Find working code examples for any peripheral or use case
-
 ---
 
 ## 🎯 How Context7 Uses This
@@ -88,7 +77,7 @@ The taxonomy enables Context7 to understand:
   → Maps to `issue_categories.yaml` → communication_failure
   → Cross-references `peripherals.yaml` → CAN
   → Finds `priority_levels.yaml` → High priority issue 2.1
-  → Shows `examples.yaml` → can_communication_mode example
+  → Shows `CAN_Controller_Area_Network.md` → workaround code
 
 ### 2. **Natural Language Understanding**
 - **"System won't wake from deepsleep"**
@@ -96,14 +85,14 @@ The taxonomy enables Context7 to understand:
   → `issue_categories.yaml` → wakeup_failure
   → `peripherals.yaml` → PWC peripheral
   → `priority_levels.yaml` → Issue 6.1 (high priority)
-  → `examples.yaml` → deepsleep_rtc example
+  → Shows `PWC_Power_Control.md` → deepsleep workaround
 
 ### 3. **Cross-Reference Resolution**
-- **"ADC with DMA example"**
+- **"ADC with DMA"**
   → `peripherals.yaml` → ADC works_with DMA
-  → `examples.yaml` → adc_dma category
+  → `ADC_Analog_to_Digital_Converter.md` → DMA section
   → Shows relationship to Issue 1.1
-  → Provides working example path
+  → Provides working code example
 
 ### 4. **Dependency Discovery**
 - **"What do I need for CAN?"**
@@ -123,9 +112,8 @@ The taxonomy enables Context7 to understand:
 | **priority_levels.yaml** | 3 priority levels | Risk assessment |
 | **keywords.yaml** | 200+ keywords | Search optimization |
 | **peripheral_relationships.yaml** | 26 peripherals | Dependency mapping |
-| **examples.yaml** | 1,985 examples | Code discovery |
 
-**Total:** 6 taxonomy files covering all aspects of AT32F403A/407 documentation
+**Total:** 5 taxonomy files covering all aspects of AT32F403A/407 documentation
 
 ---
 
@@ -137,23 +125,23 @@ The taxonomy enables Context7 to understand:
 2. `issue_categories.yaml` → system_exception → Flash peripheral
 3. `peripherals.yaml` → Flash → errata_section 1.1.12
 4. `priority_levels.yaml` → Issue 12.2 → High priority
-5. `examples.yaml` → flash_write_read → Workaround demonstrated
-6. **Answer:** "Issue 12.2 - Disable interrupts during NZW erase. See examples/flash/flash_write_read/"
+5. `FLASH_Flash_Memory_Controller.md` → Workaround section
+6. **Answer:** "Issue 12.2 - Disable interrupts during NZW erase. See Flash documentation."
 
 ### Query: "PWM motor control"
 **Context7 Resolution:**
 1. `keywords.yaml` → "PWM" → TMR peripheral
 2. `peripherals.yaml` → TMR → common_uses: "pwm-generation", "motor control"
-3. `examples.yaml` → TMR → pwm category → Multiple examples
-4. **Answer:** "Use Timer PWM. Examples: tmr_pwm_output, tmr_complementary_signals (with deadtime for motor control)"
+3. `TMR_Timer.md` → PWM section with code examples
+4. **Answer:** "Use Timer PWM. See TMR documentation for PWM output and complementary signals (with deadtime for motor control)."
 
 ### Query: "Low power battery application"
 **Context7 Resolution:**
 1. `keywords.yaml` → "low power", "battery" → PWC peripheral
 2. `peripherals.yaml` → PWC → common_uses: "battery-powered", "low-power-design"
-3. `examples.yaml` → PWC → sleep_modes category
+3. `PWC_Power_Control.md` → Sleep modes section
 4. `priority_levels.yaml` → High priority issue 6.1 warning
-5. **Answer:** "Use Deepsleep mode. Warning: Issue 6.1 - Remove AHB division. Example: deepsleep_rtc"
+5. **Answer:** "Use Deepsleep mode. Warning: Issue 6.1 - Remove AHB division. See PWC documentation."
 
 ---
 
@@ -174,7 +162,6 @@ To add new entries:
 2. **New error pattern:** Add to `issue_categories.yaml`
 3. **New keywords:** Add to `keywords.yaml` for better search
 4. **New relationships:** Update `peripheral_relationships.yaml`
-5. **New examples:** Update `examples.yaml` with example details
 
 ---
 
@@ -186,8 +173,7 @@ To add new entries:
 
 **Update Triggers:**
 - New errata sheet version → Update priority_levels.yaml
-- New examples added → Update examples.yaml
-- New peripheral support → Update peripherals.yaml
+- New peripheral documentation → Update peripherals.yaml
 - User feedback on search → Update keywords.yaml
 
 ---
@@ -209,11 +195,11 @@ Improvements to taxonomy welcome:
 - [Main README](../README.md) - Repository overview
 - [Errata Sheet](../ES0002_AT32F403A_407_Errata_Sheet_EN_V2.0.11.md) - All 41 issues
 - [FAQ](../FAQ.md) - Common questions
-- [Firmware Library](../AT32F403A_407_Firmware_Library/) - Drivers and examples
+- [Driver Library](../AT32F403A_407_Firmware_Library/) - API reference
 
 ---
 
 **Status:** ✅ Complete and production-ready for Context7  
-**Impact:** Enables intelligent semantic search across 1,985 examples and 41 errata issues  
+**Impact:** Enables intelligent semantic search across 26 peripheral guides and 41 errata issues  
 **Benefit:** Context7 can answer natural language questions with precise technical answers
 

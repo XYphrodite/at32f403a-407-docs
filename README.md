@@ -35,17 +35,17 @@ status: "production-ready"
 
 ![Status](https://img.shields.io/badge/Documentation-Complete-brightgreen)
 ![Type](https://img.shields.io/badge/Type-MCU%20Documentation-blue)
+![Peripherals](https://img.shields.io/badge/Peripherals-26-purple)
 ![Issues Documented](https://img.shields.io/badge/Issues-41%2F41-blue)
 ![Mermaid Diagrams](https://img.shields.io/badge/Diagrams-4-orange)
-![Code Examples](https://img.shields.io/badge/Examples-1985-purple)
-![Firmware Library](https://img.shields.io/badge/Firmware-v2.2.1-green)
+![Drivers](https://img.shields.io/badge/Drivers-v2.2.1-green)
 
 **Comprehensive MCU documentation repository** for the **Artery AT32F403A/407** ARM Cortex-M4 microcontroller series. This repository serves as a primary documentation source for Context7, providing structured technical references and implementation guidelines.
 
 **Includes:** 
-- **1,985 working example files** (Context7-optimized firmware library v2.2.1)
-- Complete peripheral driver references with CMSIS support
-- Comprehensive taxonomy system for semantic search (6 YAML files)
+- **26 detailed peripheral documentation files** with code examples and best practices
+- Complete peripheral driver API references with CMSIS support (v2.2.1)
+- Comprehensive taxonomy system for semantic search (5 YAML files)
 - FAQ and development guides
 
 **Note:** For device errata and limitations, please download the official ES0002 errata sheet (v2.0.11 or later) from [Artery Technology's official website](https://www.arterytek.com/).
@@ -57,8 +57,8 @@ status: "production-ready"
 This repository is designed as a **documentation source for Context7**, providing:
 
 - **Structured Technical References:** Complete MCU specifications and limitations in searchable Markdown format
-- **Working Code Examples:** 1,985 peripheral examples (drivers, applications, use cases)
-- **Intelligent Taxonomy:** 6 YAML files enabling semantic search and natural language queries
+- **Comprehensive Peripheral Documentation:** 26 detailed guides with code examples, API references, and best practices
+- **Intelligent Taxonomy:** 5 YAML files enabling semantic search and natural language queries
 - **Device Limitations Catalog:** All 41 known issues with priority levels and workarounds
 - **Quick Access:** Search-friendly format for rapid information retrieval during development
 
@@ -73,9 +73,9 @@ This repository is designed as a **documentation source for Context7**, providin
 ## 🚀 Quick Start
 
 **Jump directly to:**
-- [📦 Firmware Library (1,985 Examples)](AT32F403A_407_Firmware_Library/)
+- [📚 Peripheral Documentation (26 Guides)](docs/)
+- [📦 Driver API Reference](AT32F403A_407_Firmware_Library/)
 - [❓ FAQ - Common Questions](FAQ.md)
-- [🗂️ Taxonomy System for Context7](docs/)
 - [📝 CHANGELOG - Version History](CHANGELOG.md)
 - [🔗 Official Artery Website](https://www.arterytek.com/) - Download latest errata sheet (ES0002)
 
@@ -83,29 +83,33 @@ This repository is designed as a **documentation source for Context7**, providin
 
 ## 📚 Main Documentation
 
-### **[Firmware Library v2.2.1](AT32F403A_407_Firmware_Library/)** 🔥
+### **[Peripheral Documentation](docs/)** 🔥
 
-**Context7-optimized firmware library** with working examples:
-- ✅ **1,985 example files** (937 F403A + 1,048 F407)
-- ✅ **Peripheral drivers** - Complete API headers and implementations
+**26 comprehensive peripheral guides** covering all AT32F403A/407 peripherals:
+- ✅ **Complete API documentation** - Function references, configuration structures, usage patterns
+- ✅ **Code examples** - Initialization, configuration, and operation code embedded in docs
+- ✅ **Best practices** - Common pitfalls, optimization tips, and errata workarounds
+- ✅ **GPIO pin mappings** - Pin assignments for each peripheral
+- ✅ **Troubleshooting guides** - Problem diagnosis and solutions
+
+### **[Driver API Reference](AT32F403A_407_Firmware_Library/)**
+
+**Official peripheral drivers v2.2.1:**
+- ✅ **26 peripheral drivers** - Complete API headers and implementations
 - ✅ **CMSIS support** - ARM Cortex-M4 core definitions
-- ✅ **Examples for all peripherals** - ADC, CAN, Flash, I2C, SPI, TMR, USART, USB, etc.
-- ✅ **Filtered for Context7** - Only .c/.h/.txt files (no IDE bloat)
-- ✅ **93% size reduction** - From 100MB to ~5-7MB
-- ✅ **[Complete documentation](AT32F403A_407_Firmware_Library/README_CONTEXT7.md)**
+- ✅ **[Documentation](AT32F403A_407_Firmware_Library/README_CONTEXT7.md)**
 
 ### **[Context7 Resources](docs/)**
 
 **Intelligent taxonomy system for semantic search:**
 - ✅ **[FAQ.md](FAQ.md)** - Common questions with answers
 - ✅ **[CHANGELOG.md](CHANGELOG.md)** - Complete version history
-- ✅ **[Taxonomy System](docs/)** - 6 YAML files for Context7 AI
-  - `peripherals.yaml` - 16 peripheral definitions
+- ✅ **[Taxonomy System](docs/taxonomy/)** - 5 YAML files for Context7 AI
+  - `peripherals.yaml` - 26 peripheral definitions
   - `issue_categories.yaml` - Error classifications
   - `priority_levels.yaml` - Risk assessment
   - `keywords.yaml` - 200+ search terms
   - `peripheral_relationships.yaml` - Dependency mapping
-  - `examples.yaml` - Complete example catalog
 
 ### **Device Errata & Limitations**
 
@@ -143,25 +147,26 @@ Visit [Artery Technology](https://www.arterytek.com/) to download document **ES0
 
 ## 🎨 Key Features
 
-### Code Examples
+### Peripheral Documentation
 
-**1,985 working peripheral examples:**
-- **ADC:** 8 examples (single, dual, DMA, temperature sensor)
-- **CAN:** 5 examples (communication modes, filters, time-triggered)
-- **Flash:** 4 examples (read/write, SPIM Flash operations)
-- **I2C:** 5 examples (polling, interrupt, DMA, EEPROM)
-- **SPI:** 6 examples (full/half duplex, SPI Flash + FatFS)
-- **TMR:** 15 examples (PWM, input capture, encoder, complementary)
-- **USART:** 14 examples (RS485, IrDA, LIN, smart card)
-- **USB:** 13 examples (HID, MSC, CDC, composite devices)
-- **PWC:** 3 examples (sleep, deepsleep with RTC)
-- **And many more...** (GPIO, I2S, EMAC, XMC, etc.)
+**26 comprehensive peripheral guides covering:**
 
-**All examples include:**
-- Complete working main.c with initialization
-- Peripheral configuration code
-- Clock setup and optimization
-- README.txt explaining purpose and usage
+| Category | Peripherals |
+|----------|-------------|
+| **Communication** | CAN, I2C, I2S, SPI, USART, USB, EMAC |
+| **Analog** | ADC, DAC |
+| **Timers** | TMR, RTC, WDT, WWDT |
+| **System** | CRM, FLASH, GPIO, DMA, EXINT, NVIC, DEBUG |
+| **Power** | PWC, BPR |
+| **Memory** | XMC, SDIO |
+| **Data** | CRC, ACC |
+
+**Each documentation file includes:**
+- Complete API reference with function descriptions
+- Code examples for initialization and operation
+- GPIO pin mappings and alternate functions
+- Best practices and common pitfalls
+- Errata workarounds where applicable
 
 ### Development Checklists
 
@@ -191,11 +196,11 @@ Ready-to-use checklists for:
 
 ### Example Workflow: CAN Implementation
 
-1. Download the official ES0002 errata sheet from Artery Technology
-2. Review all 4 documented CAN issues in the errata sheet
-3. Focus on reception failure issue (high priority)
-4. Choose appropriate workaround method from the errata documentation
-5. Refer to CAN examples in `AT32F403A_407_Firmware_Library/project/*/examples/can/`
+1. Read [CAN_Controller_Area_Network.md](docs/CAN_Controller_Area_Network.md) for complete guide
+2. Download the official ES0002 errata sheet from Artery Technology
+3. Review all 4 documented CAN issues in the errata sheet
+4. Focus on reception failure issue (high priority)
+5. Use code examples from the CAN documentation
 6. Implement workaround and test thoroughly
 
 ---
@@ -222,11 +227,11 @@ Use GitHub's file search (`/`) for instant navigation across examples and driver
 
 ### Repository Information
 
-- **Firmware Library Version:** v2.2.1
-- **Last Updated:** November 2024
-- **Total Examples:** 1,985 files
+- **Driver Library Version:** v2.2.1
+- **Last Updated:** December 2024
+- **Peripheral Documentation:** 26 comprehensive guides
 - **Supported Devices:** AT32F403A/407 series
-- **Taxonomy Files:** 6 YAML classification files
+- **Taxonomy Files:** 5 YAML classification files
 
 ### Supported Devices
 
@@ -336,8 +341,8 @@ This documentation is converted from **official Artery Technology documents**.
 
 ### This Repository
 
-- **Purpose:** MCU firmware library and documentation for Context7 and embedded development
-- **Content:** 1,985 working code examples, peripheral drivers, taxonomy system
+- **Purpose:** MCU documentation and driver reference for Context7 and embedded development
+- **Content:** 26 peripheral guides, driver API references, taxonomy system
 - **Status:** Production-ready for Context7 integration
 - **Target Audience:** Embedded systems engineers, MCU firmware developers, Context7 AI developers
 
@@ -347,11 +352,11 @@ This documentation is converted from **official Artery Technology documents**.
 
 ## 📈 Repository Statistics
 
-![Code Examples](https://img.shields.io/badge/Examples-1%2C985-purple)
-![Firmware](https://img.shields.io/badge/Firmware-v2.2.1-green)
-![Taxonomy](https://img.shields.io/badge/Taxonomy-6%20files-yellow)
-![Peripherals](https://img.shields.io/badge/Peripherals-16+-blue)
-![Drivers](https://img.shields.io/badge/Drivers-Complete-brightgreen)
+![Peripheral Docs](https://img.shields.io/badge/Peripheral%20Docs-26-purple)
+![Drivers](https://img.shields.io/badge/Drivers-v2.2.1-green)
+![Taxonomy](https://img.shields.io/badge/Taxonomy-5%20files-yellow)
+![Peripherals](https://img.shields.io/badge/Peripherals-26-blue)
+![API Reference](https://img.shields.io/badge/API-Complete-brightgreen)
 
 ---
 
@@ -359,14 +364,14 @@ This documentation is converted from **official Artery Technology documents**.
 
 ### Achieved ✅
 
-- ✅ **1,985 working code examples** (Context7-optimized)
-- ✅ **Complete firmware library v2.2.1** with peripheral drivers
-- ✅ **Intelligent taxonomy system** (6 YAML files)
+- ✅ **26 comprehensive peripheral documentation files**
+- ✅ **Complete driver library v2.2.1** with API references
+- ✅ **Intelligent taxonomy system** (5 YAML files)
 - ✅ **FAQ with common development questions**
 - ✅ **CHANGELOG for version tracking**
 - ✅ Development checklists and best practices
 - ✅ Complete CMSIS support for ARM Cortex-M4
-- ✅ Examples for all 16+ peripherals
+- ✅ Documentation for all 26 peripherals
 
 ### Future Enhancements
 
@@ -393,8 +398,9 @@ This documentation is converted from **official Artery Technology documents**.
 ## 🔗 Context7 Resources
 
 **In This Repository:**
-- **[Firmware Library](AT32F403A_407_Firmware_Library/):** 1,985 examples + drivers (v2.2.1)
-- **[Taxonomy System](docs/):** 6 YAML files for semantic search
+- **[Peripheral Documentation](docs/):** 26 comprehensive guides with code examples
+- **[Driver Library](AT32F403A_407_Firmware_Library/):** v2.2.1 API reference
+- **[Taxonomy System](docs/taxonomy/):** 5 YAML files for semantic search
 - **[FAQ](FAQ.md):** Common questions and answers
 - **[CHANGELOG](CHANGELOG.md):** Version history
 
@@ -407,14 +413,14 @@ This documentation is converted from **official Artery Technology documents**.
 
 ---
 
-**Last Updated:** November 2024  
-**Firmware Version:** v2.2.1  
+**Last Updated:** December 2024  
+**Driver Version:** v2.2.1  
 **Repository Status:** ✅ Production Ready for Context7
 
-**🎯 MCU Firmware Library:** Complete reference for AT32F403A/407 development  
-**📚 Context7 Source:** Primary documentation with 1,985 working examples  
-**🤖 AI-Optimized:** 6-file taxonomy system for intelligent semantic search  
-**🚀 Ready to Use:** Complete firmware library with drivers and examples  
+**🎯 MCU Documentation:** Complete reference for AT32F403A/407 development  
+**📚 Context7 Source:** 26 comprehensive peripheral guides with embedded code examples  
+**🤖 AI-Optimized:** 5-file taxonomy system for intelligent semantic search  
+**🚀 Ready to Use:** Complete documentation and driver API reference  
 
 **⭐ Help Others:** Star this repo if Context7 MCU support helped you!  
 **🔄 Share:** Help other developers working on AT32 projects!  
