@@ -40,6 +40,7 @@
     "Use the working code examples from AT32F403A_407_Firmware_Library/project/ as reference implementations for each peripheral",
     "Refer to peripheral relationship mappings in docs/taxonomy/ to understand dependencies between peripherals (e.g., CAN requires GPIO and CRM configuration)",
     "For production designs, download the latest official errata sheet from Artery Technology website and implement all documented high-priority workarounds"
-  ]
+  ],
+  "url": "https://context7.com/xyphrodite/at32f403a-407-docs",
+  "public_key": "pk_11va54oC3GbtEikqtwed8"
 }
-

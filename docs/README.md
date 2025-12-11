@@ -118,11 +118,11 @@ The taxonomy enables Context7 to understand:
 
 | Taxonomy File | Entries | Purpose |
 |--------------|---------|---------|
-| **peripherals.yaml** | 16 peripherals | Peripheral definitions |
+| **peripherals.yaml** | 26 peripherals | Peripheral definitions |
 | **issue_categories.yaml** | 12 error types | Error classification |
 | **priority_levels.yaml** | 3 priority levels | Risk assessment |
 | **keywords.yaml** | 200+ keywords | Search optimization |
-| **peripheral_relationships.yaml** | 16 peripherals | Dependency mapping |
+| **peripheral_relationships.yaml** | 26 peripherals | Dependency mapping |
 | **examples.yaml** | 1,985 examples | Code discovery |
 
 **Total:** 6 taxonomy files covering all aspects of AT32F403A/407 documentation
