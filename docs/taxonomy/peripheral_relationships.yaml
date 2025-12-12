@@ -1,6 +1,6 @@
 # AT32F403A/407 Peripheral Relationships Taxonomy
 # For Context7 Cross-Reference and Dependency Mapping
-# Updated: December 2024 - 26 peripherals
+ # Updated: December 2024 - 26 peripherals
 
 relationships:
   ACC:
